@@ -1,0 +1,106 @@
+html {
+    font-size: 14px;
+}
+
+@media (min-width: 768px) {
+    html {
+        font-size: 16px;
+    }
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    background-color: #EFF4F7;
+}
+
+.fixed-menu {
+    position: fixed;
+    background-color: #AD1A25;
+    height: 100%;
+    width: 250px;
+}
+
+.margin-0 {
+    margin: 0;
+}
+
+.center-vertical {
+    align-items: center;
+}
+
+#main-logo {
+    margin: 2vh 2vh;
+}
+
+    #main-logo:hover {
+        cursor: pointer;
+    }
+
+#main-text {
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+a {
+    text-decoration: none
+}
+
+.ml-10 {
+    margin-left: 10px;
+}
+
+.ml-20 {
+    margin-left: 20px;
+}
+
+.button-menu {
+    margin-top: 0px;
+    padding: 10px 0;
+    min-width: 90%;
+    border-end-end-radius: 35px;
+    border-start-end-radius: 35px;
+    background-color: transparent;
+    background: linear-gradient(to right, #FCCF00 50%, transparent 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
+    transition: all .3s ease-out;
+}
+
+.bg-yellow {
+    background-color: #FCCF00;
+}
+
+.button-menu:hover {
+    cursor: pointer;
+    background-position: left bottom;
+}
+
+.space {
+    height: 40%;
+}
+
+.content {
+    position: fixed;
+    margin-left: 250px;
+    width: 87%;
+    height: 100%;
+}
+
+.top {
+    background-color: white;
+    padding: 15px 30px;
+}
+
+.search-bar {
+    background: transparent url() no-repeat 10px center;
+    background-image: url(../search.png);
+    padding: 10px 35px;
+    width: 50%;
+    border-radius: 10px;
+    background-color: #EFF4F7;
+}

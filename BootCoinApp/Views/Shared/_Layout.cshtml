@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - BootCoinApp</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/BootCoinApp.styles.css" asp-append-version="true" />
+</head>
+<body>
+    <!--
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">BootCoinApp</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    -->
+
+    <div class="fixed-menu">
+        <div class="d-inline-flex" id="main-logo">
+            <img src="../assets/bootcoin.png" width="30" />
+            <div class="d-flex center-vertical ml-10">
+                <a class="text-white margin-0" id="main-text">Bootcoin</a>
+            </div>
+        </div>
+        <div class="d-inline-flex bg-yellow button-menu" id="add-coin-button">
+            <a asp-controller="Home" asp-action="AddCoin"><img id="add-coin-img" class="ml-20" src="../assets/add-coin-black.png" width="25" height="25"/></a>
+            <div class="d-flex center-vertical ml-10">
+                <a style="color: black; font-weight: bold" id="add-coin-text">Add Coin</a>
+            </div>
+        </div>
+        <div class="d-inline-flex button-menu" id="add-reward-button">
+            <a asp-controller="Home" asp-action="AddReward"><img id="add-reward-img" class="ml-20" src="../assets/add-reward-white.png" width="25" height="25"/></a>
+            <div class="d-flex center-vertical ml-10">
+                <a style="color: white" id="add-reward-text">Add Reward</a>
+            </div>
+        </div>
+        <div class="space"></div>
+        <div> <img src="../assets/bootcoin-banner.png" width=239 height=249/> </div>
+        <hr style="background-color: white; height: 3px; margin: 20px 30px;"/>
+        <div class="d-inline-flex button-menu" id="logout-button">
+            <img id="logout-img" class="ml-20" src="../assets/logout.png" width="45" height="45"/>
+            <div class="d-flex center-vertical ml-10">
+                <a style="color: white;" id="logout-text">Logout</a>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
