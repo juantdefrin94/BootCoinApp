@@ -33,7 +33,7 @@
     </header>
     -->
 
-    <div class="fixed-menu">
+    <div class="fixed-menu left-content">
         <div class="d-inline-flex" id="main-logo">
             <img src="../assets/bootcoin.png" width="30" />
             <div class="d-flex center-vertical ml-10">
@@ -41,13 +41,13 @@
             </div>
         </div>
         <div class="d-inline-flex bg-yellow button-menu" id="add-coin-button">
-            <a asp-controller="Home" asp-action="AddCoin"><img id="add-coin-img" class="ml-20" src="../assets/add-coin-black.png" width="25" height="25"/></a>
+            <img id="add-coin-img" class="ml-20" src="../assets/add-coin-black.png" width="25" height="25"/>
             <div class="d-flex center-vertical ml-10">
                 <a style="color: black; font-weight: bold" id="add-coin-text">Add Coin</a>
             </div>
         </div>
         <div class="d-inline-flex button-menu" id="add-reward-button">
-            <a asp-controller="Home" asp-action="AddReward"><img id="add-reward-img" class="ml-20" src="../assets/add-reward-white.png" width="25" height="25"/></a>
+            <img id="add-reward-img" class="ml-20" src="../assets/add-reward-white.png" width="25" height="25"/>
             <div class="d-flex center-vertical ml-10">
                 <a style="color: white" id="add-reward-text">Add Reward</a>
             </div>
@@ -63,7 +63,7 @@
         </div>
     </div>
 
-    <div>
+    <div class="fixed-menu right-content">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
