@@ -20,9 +20,21 @@ body {
 
 .fixed-menu {
     position: fixed;
-    background-color: #AD1A25;
     height: 100%;
-    width: 250px;
+    width: 100%;
+}
+
+.left-content {
+    background-color: #AD1A25;
+    width: 14%;
+    min-width: 250px;
+    left: 0;
+}
+
+.right-content {
+    background-color: #EFF4F7;
+    width: 86%;
+    right: 0;
 }
 
 .margin-0 {
@@ -68,7 +80,7 @@ a {
     background: linear-gradient(to right, #FCCF00 50%, transparent 50%);
     background-size: 200% 100%;
     background-position: right bottom;
-    transition: all .3s ease-out;
+    transition: all .2s ease-out;
 }
 
 .bg-yellow {
@@ -84,16 +96,10 @@ a {
     height: 40%;
 }
 
-.content {
-    position: fixed;
-    margin-left: 250px;
-    width: 87%;
-    height: 100%;
-}
-
-.top {
+.top-container {
     background-color: white;
     padding: 15px 30px;
+    border-bottom: 0.5px solid rgba(128, 128, 128, 0.5);
 }
 
 .search-bar {
@@ -102,5 +108,21 @@ a {
     padding: 10px 35px;
     width: 50%;
     border-radius: 10px;
-    background-color: #EFF4F7;
+}
+
+.profile{
+    width: 50%;
+    justify-content: right;
+}
+
+.title{
+    background-color: white;
+}
+
+.p-content{
+    padding: 10px 30px;
+}
+
+.card{
+    margin: 2% 4%;
 }

@@ -14,6 +14,10 @@ var addRewardImage = document.getElementById("add-reward-img")
 var hoverMenu = 1;
 var currMenu = 1;
 
+if (currMenu == 1) {
+    console.log("test");
+}
+
 function changeAttribute(choosed, notChoosed, cText, ncText) {
     choosed.style.backgroundColor = "#FCCF00";
     cText.style.color = "black";
@@ -59,6 +63,7 @@ addCoinButton.addEventListener("click", () => {
 })
 
 addCoinImage.addEventListener("click", () => {
+    console.log("masuk coin img click");
     currMenu = 1;
     changeToDefault(addCoinButton);
 })
@@ -87,6 +92,7 @@ addRewardButton.addEventListener("click", () => {
 })
 
 addRewardImage.addEventListener("click", () => {
+    console.log("masuk reward img click");
     currMenu = 2;
     changeToDefault(addRewardButton);
 })
