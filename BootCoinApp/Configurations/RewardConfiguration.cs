@@ -1,0 +1,36 @@
+﻿using BootCoinApp.Models;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+namespace BootCoinApp.Configurations
+{
+    public class RewardConfiguration : IEntityTypeConfiguration<Reward> 
+    {
+        public void Configure(EntityTypeBuilder<Reward> builder)
+        {
+            builder.HasKey(x => x.Id);
+
+            builder.Property(x => x.RewardName)
+                .IsRequired()
+                .HasMaxLength(255);
+
+            builder.Property(x => x.RewardDescription)
+                .IsRequired()
+                .HasMaxLength(1000);
+
+            builder.Property(x => x.RequiredCoin)
+                .IsRequired();
+
+            builder.Property(x => x.Photo)
+                .IsRequired();
+
+            builder.HasOne(x => x.TransactionReward)
+                .WithOne(x => x.Reward)
+                .HasForeignKey<Reward>(x => x.Id);
+
+            builder.HasOne(x => x.CategoryReward)
+                .WithMany(x => x.Rewards)
+                .HasForeignKey(x => x.CategoryId);
+        }
+    }
+}

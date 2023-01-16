@@ -9,5 +9,6 @@
         public string RewardDescription { get; set; }
         public int RequiredCoin { get; set; }
         public string Photo { get; set; }
+        public TransactionReward TransactionReward { get; set; }
     }
 }

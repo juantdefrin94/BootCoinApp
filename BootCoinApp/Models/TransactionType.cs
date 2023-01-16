@@ -2,7 +2,7 @@
 {
     public class TransactionType
     {
-        public int TransactionTypeId { get; set; }
+        public int Id { get; set; }
         public string TransactionTypeName { get; set; }
         public ICollection<HeaderTransactionAddCoinUser> HeaderTransactionAddCoinUsers { get; set; }
         public ICollection<TransactionReward> TransactionRewards { get; set; }
