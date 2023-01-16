@@ -6,6 +6,6 @@
         public string GroupName { get; set; }
         public int Bootcoin { get; set; }
         public ICollection<User> Users { get; set; }
-        public ICollection<DetailAddCoinGroup> DetailAddCoinGroups { get; set; }
+        public ICollection<DetailTransactionAddCoinGroup> DetailTransactionAddCoinGroups { get; set; }
     }
 }

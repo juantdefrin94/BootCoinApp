@@ -9,6 +9,5 @@
         public string RewardDescription { get; set; }
         public int RequiredCoin { get; set; }
         public string Photo { get; set; }
-        public ICollection<DetailTransactionReward> DetailTransactionRewards { get; set; }
     }
 }

@@ -9,7 +9,7 @@
         public string Password { get; set; }
         public int Bootcoin { get; set; }
         public string Photo { get; set; }
-        public ICollection<DetailAddCoinUser> DetailAddCoinUsers { get; set; }
-        public ICollection<DetailRewardUser> DetailRewardUsers { get; set; }
+        public ICollection<DetailTransactionAddCoinUser> DetailTransactionAddCoinUsers { get; set; }
+        public ICollection<TransactionReward> TransactionRewards { get; set; }
     }
 }

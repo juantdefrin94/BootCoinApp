@@ -5,8 +5,8 @@
         public int TransactionAddCoinUserId { get; set; }
         public HeaderTransactionAddCoinUser HeaderTransactionAddCoinUser { get; set; }
         public int AddCoinId { get; set; }
-        public AddCoin AddCoin { get; set; }
-        public int TemplateCoinId { get; set; }
-        public int BootcoinQty { get; set; }
+        public AddCoinCategory AddCoin { get; set; }
+        public int UserId { get; set; }
+        public User User { get; set; }
     }
 }
