@@ -9,7 +9,8 @@
         public Admin Admin { get; set; }
         public int TransactionTypeId { get; set; }
         public TransactionType TransactionType { get; set; }
-        public DateTime? Date { get; set; }
+        public DateTime Date { get; set; }
         public int RewardQty { get; set; }
+        public Reward Reward { get; set; }
     }
 }
