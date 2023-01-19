@@ -123,6 +123,22 @@ namespace BootCoinApp.Data
                     });
                     context.SaveChanges();
                 }
+                //Rewards
+                if (!context.Rewards.Any())
+                {
+                    context.Rewards.AddRange(new List<Reward>()
+                    {
+                        new Reward()
+                        {
+                            CategoryId = 1,
+                            RewardName = "Testing",
+                            RewardDescription = "Reward Testing 1",
+                            RequiredCoin = 1,
+                            Photo = "test.jpg"
+                        }
+                    });
+                    context.SaveChanges();
+                }
                 //TransactionRewards
                 if (!context.TransactionRewards.Any())
                 {
@@ -133,6 +149,7 @@ namespace BootCoinApp.Data
                             UserId = 1,
                             AdminId = 1,
                             TransactionTypeId = 1,
+                            RewardId = 1,
                             RewardQty = 1,
                             Date = DateTime.Today
                         }
@@ -163,22 +180,6 @@ namespace BootCoinApp.Data
                             TransactionAddCoinUserId = 1,
                             AddCoinId = 1,
                             UserId = 1
-                        }
-                    });
-                    context.SaveChanges();
-                }
-                //Rewards
-                if (!context.Rewards.Any())
-                {
-                    context.Rewards.AddRange(new List<Reward>()
-                    {
-                        new Reward()
-                        {
-                            CategoryId = 1,
-                            RewardName = "Testing",
-                            RewardDescription = "Reward Testing 1",
-                            RequiredCoin = 1,
-                            Photo = "test.jpg"
                         }
                     });
                     context.SaveChanges();
