@@ -8,8 +8,6 @@ namespace BootCoinApp.Configurations
     {
         public void Configure(EntityTypeBuilder<Reward> builder)
         {
-            builder.HasKey(x => x.Id);
-
             builder.Property(x => x.RewardName)
                 .IsRequired()
                 .HasMaxLength(255);
@@ -26,7 +24,7 @@ namespace BootCoinApp.Configurations
 
             builder.HasOne(x => x.TransactionReward)
                 .WithOne(x => x.Reward)
-                .HasForeignKey<Reward>(x => x.Id);
+                .HasForeignKey<TransactionReward>(x => x.RewardId);
 
             builder.HasOne(x => x.CategoryReward)
                 .WithMany(x => x.Rewards)

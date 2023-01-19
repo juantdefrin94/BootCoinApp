@@ -201,7 +201,10 @@ namespace BootCoinApp.Migrations
             modelBuilder.Entity("BootCoinApp.Models.Reward", b =>
                 {
                     b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
@@ -244,6 +247,9 @@ namespace BootCoinApp.Migrations
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("RewardId")
+                        .HasColumnType("int");
+
                     b.Property<int>("RewardQty")
                         .HasColumnType("int");
 
@@ -256,6 +262,9 @@ namespace BootCoinApp.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("AdminId");
+
+                    b.HasIndex("RewardId")
+                        .IsUnique();
 
                     b.HasIndex("TransactionTypeId");
 
@@ -414,15 +423,7 @@ namespace BootCoinApp.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("BootCoinApp.Models.TransactionReward", "TransactionReward")
-                        .WithOne("Reward")
-                        .HasForeignKey("BootCoinApp.Models.Reward", "Id")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("CategoryReward");
-
-                    b.Navigation("TransactionReward");
                 });
 
             modelBuilder.Entity("BootCoinApp.Models.TransactionReward", b =>
@@ -430,6 +431,12 @@ namespace BootCoinApp.Migrations
                     b.HasOne("BootCoinApp.Models.Admin", "Admin")
                         .WithMany("TransactionRewards")
                         .HasForeignKey("AdminId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("BootCoinApp.Models.Reward", "Reward")
+                        .WithOne("TransactionReward")
+                        .HasForeignKey("BootCoinApp.Models.TransactionReward", "RewardId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -446,6 +453,8 @@ namespace BootCoinApp.Migrations
                         .IsRequired();
 
                     b.Navigation("Admin");
+
+                    b.Navigation("Reward");
 
                     b.Navigation("TransactionType");
 
@@ -501,9 +510,9 @@ namespace BootCoinApp.Migrations
                     b.Navigation("DetailTransactionAddCoinUsers");
                 });
 
-            modelBuilder.Entity("BootCoinApp.Models.TransactionReward", b =>
+            modelBuilder.Entity("BootCoinApp.Models.Reward", b =>
                 {
-                    b.Navigation("Reward")
+                    b.Navigation("TransactionReward")
                         .IsRequired();
                 });
 
