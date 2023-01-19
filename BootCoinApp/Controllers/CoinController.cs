@@ -3,17 +3,16 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace BootCoinApp.Controllers
 {
-    public class RewardController : Controller
+    public class CoinController : Controller
     {
         private readonly AppDbContext _context;
-        public RewardController(AppDbContext context)
+        public CoinController(AppDbContext context)
         {
             _context = context;
         }
-        public IActionResult AddReward()
+        public IActionResult AddCoin()
         {
-            var rewards = _context.Rewards.ToList();
-            return View(rewards);
+            return View();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using BootCoinApp.Models;
+﻿using BootCoinApp.Data;
+using BootCoinApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
