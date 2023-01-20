@@ -36,6 +36,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=AddCoin}/{id?}");
+    pattern: "{controller=Home}/{action=AddReward}/{id?}");
 
 app.Run();

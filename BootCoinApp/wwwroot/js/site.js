@@ -5,17 +5,23 @@
 var addCoinButton = document.getElementById("add-coin-button");
 var addRewardButton = document.getElementById("add-reward-button");
 var logoutButton = document.getElementById("logout-button");
-var addCoinText = document.getElementById("add-coin-text")
-var addRewardText = document.getElementById("add-reward-text")
-var logoutText = document.getElementById("logout-text")
-var addCoinImage = document.getElementById("add-coin-img")
-var addRewardImage = document.getElementById("add-reward-img")
+var addCoinText = document.getElementById("add-coin-text");
+var addRewardText = document.getElementById("add-reward-text");
+var logoutText = document.getElementById("logout-text");
+var addCoinImage = document.getElementById("add-coin-img");
+var addRewardImage = document.getElementById("add-reward-img");
+var path = window.location.pathname;
+var page = path.split("/").pop();
 
 var hoverMenu = 1;
-var currMenu = 1;
+var currMenu = 2;
 
-if (currMenu == 1) {
-    console.log("test");
+if (page == "AddCoin") {
+    currMenu = 1;
+    changeToDefault(addRewardButton);
+} else {
+    currMenu = 2;
+    changeToDefault(addCoinButton);
 }
 
 function changeAttribute(choosed, notChoosed, cText, ncText) {
@@ -57,21 +63,15 @@ addCoinButton.addEventListener("mouseleave", () => {
     changeToDefault(addCoinButton);
 })
 
-addCoinButton.addEventListener("click", () => {
-    currMenu = 1;
-    changeToDefault(addCoinButton);
-})
+//addCoinImage.addEventListener("click", () => {
+//    currMenu = 1;
+//    changeToDefault(addCoinButton);
+//})
 
-addCoinImage.addEventListener("click", () => {
-    console.log("masuk coin img click");
-    currMenu = 1;
-    changeToDefault(addCoinButton);
-})
-
-addCoinText.addEventListener("click", () => {
-    currMenu = 1;
-    changeToDefault(addCoinButton);
-})
+//addCoinText.addEventListener("click", () => {
+//    currMenu = 1;
+//    changeToDefault(addCoinButton);
+//})
 
 addRewardButton.addEventListener("mouseover", () => {
     if (hoverMenu == 1) {
@@ -86,22 +86,16 @@ addRewardButton.addEventListener("mouseleave", () => {
     changeToDefault(addRewardButton);
 })
 
-addRewardButton.addEventListener("click", () => {
-    currMenu = 2;
-    changeToDefault(addRewardButton);
-})
+//addRewardImage.addEventListener("click", () => {
+//    console.log("masuk reward img click");
+//    currMenu = 2;
+//    changeToDefault(addRewardButton);
+//})
 
-addRewardImage.addEventListener("click", () => {
-    console.log("masuk reward img click");
-    currMenu = 2;
-    changeToDefault(addRewardButton);
-})
-
-addRewardText.addEventListener("click", () => {
-    currMenu = 2;
-    changeToDefault(addRewardButton);
-})
-
+//addRewardText.addEventListener("click", () => {
+//    currMenu = 2;
+//    changeToDefault(addRewardButton);
+//})
 
 logoutButton.addEventListener("mouseover", () => {
     logoutButton.style.backgroundColor = "#FCCF00";
