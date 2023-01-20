@@ -19,12 +19,7 @@ namespace BootCoinApp.Controllers
         public IActionResult AddReward()
         {
             var rewards = _context.Rewards.ToList();
-            return View(rewards);
-        }
-
-        public IActionResult AddCoin()
-        {
-            return View();
+            return View("AddReward",rewards);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
