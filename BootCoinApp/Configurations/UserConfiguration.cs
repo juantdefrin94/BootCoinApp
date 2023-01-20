@@ -8,6 +8,12 @@ namespace BootCoinApp.Configurations
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
+            builder.Property(x => x.FullName)
+                .IsRequired();
+
+            builder.Property(x => x.UserName)
+                .IsRequired();
+
             builder.Property(x => x.Email)
                 .IsRequired();
 
@@ -18,6 +24,9 @@ namespace BootCoinApp.Configurations
                 .IsRequired();
 
             builder.Property(x => x.Photo)
+                .IsRequired();
+
+            builder.Property(x => x.Divisi)
                 .IsRequired();
 
             builder.HasMany(x => x.TransactionRewards)

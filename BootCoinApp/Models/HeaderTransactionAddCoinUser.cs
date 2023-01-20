@@ -7,8 +7,6 @@ namespace BootCoinApp.Models
         public int Id { get; set; }
         public int AdminId { get; set; }
         public Admin Admin { get; set; }
-        public int TransactionTypeId { get; set; }
-        public TransactionType TransacationType { get; set; }
         public DateTime? Date { get; set; }
         public ICollection<DetailTransactionAddCoinUser> DetailTransactionAddCoinUsers { get; set; }
     }

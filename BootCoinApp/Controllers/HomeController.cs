@@ -22,14 +22,15 @@ namespace BootCoinApp.Controllers
             var category_rewards = _context.CategoryRewards.ToList();
             return View(category_rewards);
         }
-        public IActionResult DetailReward(int id)
+        public IActionResult DetailReward(int id, string query = "")
         {
-            CategoryReward categoryReward = _context.CategoryRewards.Include(cr => cr.Rewards).SingleOrDefault(cr => cr.Id == id);
+            CategoryReward categoryReward = _context.CategoryRewards.Include(cr => cr.Rewards)
+                .SingleOrDefault(cr => cr.Id == id && cr.Name.Contains(query));
 
-            if (categoryReward == null)
-            {
-                return NotFound();
-            }
+            //if (categoryReward == null)
+            //{
+            //    return NotFound("No data lol");
+            //}
 
             return View(categoryReward);
         }
@@ -37,6 +38,7 @@ namespace BootCoinApp.Controllers
         [HttpPost]
         public IActionResult AddMoreReward()
         {
+
             return RedirectToAction("DetailReward");
         }
 

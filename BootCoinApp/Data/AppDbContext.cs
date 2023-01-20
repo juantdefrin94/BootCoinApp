@@ -21,7 +21,6 @@ namespace BootCoinApp.Data
         public DbSet<HeaderTransactionAddCoinUser> HeaderTransactionAddCoinUsers { get; set; }
         public DbSet<Reward> Rewards { get; set; }
         public DbSet<TransactionReward> TransactionRewards { get; set; }
-        public DbSet<TransactionType> TransactionTypes { get; set; }
         public DbSet<User> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -36,7 +35,6 @@ namespace BootCoinApp.Data
             modelBuilder.ApplyConfiguration(new HeaderTransactionAddCoinUserConfiguration());
             modelBuilder.ApplyConfiguration(new RewardConfiguration());
             modelBuilder.ApplyConfiguration(new TransactionRewardConfiguration());
-            modelBuilder.ApplyConfiguration(new TransactionTypeConfiguration());
             modelBuilder.ApplyConfiguration(new UserConfiguration());
         }
     }
