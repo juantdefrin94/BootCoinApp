@@ -1,0 +1,82 @@
+﻿@model CategoryReward
+@{
+    ViewData["Title"] = "Detail Reward";
+}
+
+<div class="top d-flex top-container">
+    <input class="search-bar" type="text" placeholder="Search" />
+
+    <div class="d-inline-flex center-vertical profile">
+        <div class="d-flex center-vertical">
+            <a class="text-black margin-0" id="main-text">Admin</a>
+        </div>
+        <img class="ml-10" src="./assets/bootcoin.png" width="30" height="30" />
+    </div>
+</div>
+
+<div class="title p-content">
+    <h3>@ViewData["Title"]</h3>
+</div>
+
+<div>
+    <img class="d-block" src="#" style="margin: auto; width: 85%;" />
+</div>
+
+<div class="p-content">
+    <h5 class="fw-bolder">Reward Details - @Model.Name</h5>
+</div>
+
+<div class="row" style="margin: 10px 20px;">
+    @foreach (var item in Model.Rewards)
+    {
+        <div class="card col" style="width: 19rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">@item.RewardName</h5>
+            </div>
+        </div>
+    }
+</div>
+
+<!-- Button trigger modal -->
+<div class="d-grid gap-2 col-6 mx-auto">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formModal">
+        Add More
+    </button>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="formModalLabel">Modal Title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form method="post" asp-controller="Home" asp-action="AddMoreReward">
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="inputName">Name</label>
+                        <input type="text" class="form-control" id="inputName" name="inputName" placeholder="Enter your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail">Email</label>
+                        <input type="email" class="form-control" id="inputEmail" name="inputEmail" placeholder="Enter your email">
+                    </div>
+                    <div class="form-group">
+                        <label for="inputMessage">Message</label>
+                        <textarea class="form-control" id="inputMessage" name="inputMessage" rows="3"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"></script>
+
