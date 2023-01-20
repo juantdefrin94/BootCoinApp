@@ -159,14 +159,9 @@ namespace BootCoinApp.Migrations
                         .IsRequired()
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("TransactionTypeId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("AdminId");
-
-                    b.HasIndex("TransactionTypeId");
 
                     b.ToTable("HeaderTransactionAddCoinGroups");
                 });
@@ -186,14 +181,9 @@ namespace BootCoinApp.Migrations
                         .IsRequired()
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("TransactionTypeId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("AdminId");
-
-                    b.HasIndex("TransactionTypeId");
 
                     b.ToTable("HeaderTransactionAddCoinUsers");
                 });
@@ -250,12 +240,6 @@ namespace BootCoinApp.Migrations
                     b.Property<int>("RewardId")
                         .HasColumnType("int");
 
-                    b.Property<int>("RewardQty")
-                        .HasColumnType("int");
-
-                    b.Property<int>("TransactionTypeId")
-                        .HasColumnType("int");
-
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
@@ -266,28 +250,9 @@ namespace BootCoinApp.Migrations
                     b.HasIndex("RewardId")
                         .IsUnique();
 
-                    b.HasIndex("TransactionTypeId");
-
                     b.HasIndex("UserId");
 
                     b.ToTable("TransactionRewards");
-                });
-
-            modelBuilder.Entity("BootCoinApp.Models.TransactionType", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("TransactionTypeName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("TransactionTypes");
                 });
 
             modelBuilder.Entity("BootCoinApp.Models.User", b =>
@@ -301,7 +266,15 @@ namespace BootCoinApp.Migrations
                     b.Property<int>("Bootcoin")
                         .HasColumnType("int");
 
+                    b.Property<string>("Divisi")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FullName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -313,6 +286,10 @@ namespace BootCoinApp.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Photo")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -385,15 +362,7 @@ namespace BootCoinApp.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("BootCoinApp.Models.TransactionType", "TransactionType")
-                        .WithMany("HeaderTransactionAddCoinGroups")
-                        .HasForeignKey("TransactionTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Admin");
-
-                    b.Navigation("TransactionType");
                 });
 
             modelBuilder.Entity("BootCoinApp.Models.HeaderTransactionAddCoinUser", b =>
@@ -404,15 +373,7 @@ namespace BootCoinApp.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("BootCoinApp.Models.TransactionType", "TransacationType")
-                        .WithMany("HeaderTransactionAddCoinUsers")
-                        .HasForeignKey("TransactionTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Admin");
-
-                    b.Navigation("TransacationType");
                 });
 
             modelBuilder.Entity("BootCoinApp.Models.Reward", b =>
@@ -440,12 +401,6 @@ namespace BootCoinApp.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("BootCoinApp.Models.TransactionType", "TransactionType")
-                        .WithMany("TransactionRewards")
-                        .HasForeignKey("TransactionTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("BootCoinApp.Models.User", "User")
                         .WithMany("TransactionRewards")
                         .HasForeignKey("UserId")
@@ -455,8 +410,6 @@ namespace BootCoinApp.Migrations
                     b.Navigation("Admin");
 
                     b.Navigation("Reward");
-
-                    b.Navigation("TransactionType");
 
                     b.Navigation("User");
                 });
@@ -514,15 +467,6 @@ namespace BootCoinApp.Migrations
                 {
                     b.Navigation("TransactionReward")
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("BootCoinApp.Models.TransactionType", b =>
-                {
-                    b.Navigation("HeaderTransactionAddCoinGroups");
-
-                    b.Navigation("HeaderTransactionAddCoinUsers");
-
-                    b.Navigation("TransactionRewards");
                 });
 
             modelBuilder.Entity("BootCoinApp.Models.User", b =>

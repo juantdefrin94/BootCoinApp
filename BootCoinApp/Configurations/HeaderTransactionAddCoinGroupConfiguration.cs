@@ -18,10 +18,6 @@ namespace BootCoinApp.Configurations
             builder.HasOne(x => x.Admin)
                 .WithMany(x => x.HeaderTransactionAddCoinGroups)
                 .HasForeignKey(x => x.AdminId);
-
-            builder.HasOne(x => x.TransactionType)
-                .WithMany(x => x.HeaderTransactionAddCoinGroups)
-                .HasForeignKey(x => x.TransactionTypeId);
         }
     }
 }

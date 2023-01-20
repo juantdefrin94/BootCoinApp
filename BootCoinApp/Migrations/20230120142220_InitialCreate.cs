@@ -68,16 +68,43 @@ namespace BootCoinApp.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "TransactionTypes",
+                name: "HeaderTransactionAddCoinGroups",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    TransactionTypeName = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    AdminId = table.Column<int>(type: "int", nullable: false),
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TransactionTypes", x => x.Id);
+                    table.PrimaryKey("PK_HeaderTransactionAddCoinGroups", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_HeaderTransactionAddCoinGroups_Admins_AdminId",
+                        column: x => x.AdminId,
+                        principalTable: "Admins",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "HeaderTransactionAddCoinUsers",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    AdminId = table.Column<int>(type: "int", nullable: false),
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_HeaderTransactionAddCoinUsers", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_HeaderTransactionAddCoinUsers_Admins_AdminId",
+                        column: x => x.AdminId,
+                        principalTable: "Admins",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -110,10 +137,13 @@ namespace BootCoinApp.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     GroupId = table.Column<int>(type: "int", nullable: false),
+                    FullName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UserName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Bootcoin = table.Column<int>(type: "int", nullable: false),
-                    Photo = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Photo = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Divisi = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -122,102 +152,6 @@ namespace BootCoinApp.Migrations
                         name: "FK_Users_GroupUsers_GroupId",
                         column: x => x.GroupId,
                         principalTable: "GroupUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "HeaderTransactionAddCoinGroups",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    AdminId = table.Column<int>(type: "int", nullable: false),
-                    TransactionTypeId = table.Column<int>(type: "int", nullable: false),
-                    Date = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_HeaderTransactionAddCoinGroups", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_HeaderTransactionAddCoinGroups_Admins_AdminId",
-                        column: x => x.AdminId,
-                        principalTable: "Admins",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_HeaderTransactionAddCoinGroups_TransactionTypes_TransactionTypeId",
-                        column: x => x.TransactionTypeId,
-                        principalTable: "TransactionTypes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "HeaderTransactionAddCoinUsers",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    AdminId = table.Column<int>(type: "int", nullable: false),
-                    TransactionTypeId = table.Column<int>(type: "int", nullable: false),
-                    Date = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_HeaderTransactionAddCoinUsers", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_HeaderTransactionAddCoinUsers_Admins_AdminId",
-                        column: x => x.AdminId,
-                        principalTable: "Admins",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_HeaderTransactionAddCoinUsers_TransactionTypes_TransactionTypeId",
-                        column: x => x.TransactionTypeId,
-                        principalTable: "TransactionTypes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "TransactionRewards",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    UserId = table.Column<int>(type: "int", nullable: false),
-                    RewardId = table.Column<int>(type: "int", nullable: false),
-                    AdminId = table.Column<int>(type: "int", nullable: false),
-                    TransactionTypeId = table.Column<int>(type: "int", nullable: false),
-                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    RewardQty = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_TransactionRewards", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_TransactionRewards_Admins_AdminId",
-                        column: x => x.AdminId,
-                        principalTable: "Admins",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_TransactionRewards_Rewards_RewardId",
-                        column: x => x.RewardId,
-                        principalTable: "Rewards",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_TransactionRewards_TransactionTypes_TransactionTypeId",
-                        column: x => x.TransactionTypeId,
-                        principalTable: "TransactionTypes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_TransactionRewards_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -284,6 +218,40 @@ namespace BootCoinApp.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "TransactionRewards",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    RewardId = table.Column<int>(type: "int", nullable: false),
+                    AdminId = table.Column<int>(type: "int", nullable: false),
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_TransactionRewards", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_TransactionRewards_Admins_AdminId",
+                        column: x => x.AdminId,
+                        principalTable: "Admins",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_TransactionRewards_Rewards_RewardId",
+                        column: x => x.RewardId,
+                        principalTable: "Rewards",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_TransactionRewards_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_DetailTransactionAddCoinGroups_AddCoinId",
                 table: "DetailTransactionAddCoinGroups",
@@ -310,19 +278,9 @@ namespace BootCoinApp.Migrations
                 column: "AdminId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_HeaderTransactionAddCoinGroups_TransactionTypeId",
-                table: "HeaderTransactionAddCoinGroups",
-                column: "TransactionTypeId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_HeaderTransactionAddCoinUsers_AdminId",
                 table: "HeaderTransactionAddCoinUsers",
                 column: "AdminId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_HeaderTransactionAddCoinUsers_TransactionTypeId",
-                table: "HeaderTransactionAddCoinUsers",
-                column: "TransactionTypeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Rewards_CategoryId",
@@ -339,11 +297,6 @@ namespace BootCoinApp.Migrations
                 table: "TransactionRewards",
                 column: "RewardId",
                 unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_TransactionRewards_TransactionTypeId",
-                table: "TransactionRewards",
-                column: "TransactionTypeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_TransactionRewards_UserId",
@@ -385,9 +338,6 @@ namespace BootCoinApp.Migrations
 
             migrationBuilder.DropTable(
                 name: "Admins");
-
-            migrationBuilder.DropTable(
-                name: "TransactionTypes");
 
             migrationBuilder.DropTable(
                 name: "CategoryRewards");

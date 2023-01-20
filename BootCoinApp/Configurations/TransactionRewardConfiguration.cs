@@ -11,9 +11,6 @@ namespace BootCoinApp.Configurations
             builder.Property(x => x.Date)
                 .IsRequired();
 
-            builder.Property(x => x.RewardQty)
-                .IsRequired();
-
             builder.HasOne(x => x.Admin)
                 .WithMany(x => x.TransactionRewards)
                 .HasForeignKey(x => x.AdminId);
