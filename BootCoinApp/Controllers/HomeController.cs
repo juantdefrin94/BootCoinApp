@@ -1,6 +1,7 @@
 ﻿using BootCoinApp.Data;
 using BootCoinApp.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
 namespace BootCoinApp.Controllers
@@ -18,8 +19,25 @@ namespace BootCoinApp.Controllers
 
         public IActionResult AddReward()
         {
-            var rewards = _context.Rewards.ToList();
-            return View("AddReward",rewards);
+            var category_rewards = _context.CategoryRewards.ToList();
+            return View(category_rewards);
+        }
+        public IActionResult DetailReward(int id)
+        {
+            CategoryReward categoryReward = _context.CategoryRewards.Include(cr => cr.Rewards).SingleOrDefault(cr => cr.Id == id);
+
+            if (categoryReward == null)
+            {
+                return NotFound();
+            }
+
+            return View(categoryReward);
+        }
+
+        [HttpPost]
+        public IActionResult AddMoreReward()
+        {
+            return RedirectToAction("DetailReward");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
