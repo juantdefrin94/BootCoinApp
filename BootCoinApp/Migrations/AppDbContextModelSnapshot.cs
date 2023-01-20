@@ -43,7 +43,7 @@ namespace BootCoinApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("AddCoinCategories");
+                    b.ToTable("AddCoinCategories", (string)null);
                 });
 
             modelBuilder.Entity("BootCoinApp.Models.Admin", b =>
@@ -64,7 +64,7 @@ namespace BootCoinApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Admins");
+                    b.ToTable("Admins", (string)null);
                 });
 
             modelBuilder.Entity("BootCoinApp.Models.CategoryReward", b =>
@@ -81,7 +81,7 @@ namespace BootCoinApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("CategoryRewards");
+                    b.ToTable("CategoryRewards", (string)null);
                 });
 
             modelBuilder.Entity("BootCoinApp.Models.DetailTransactionAddCoinGroup", b =>
@@ -101,7 +101,7 @@ namespace BootCoinApp.Migrations
 
                     b.HasIndex("GroupId");
 
-                    b.ToTable("DetailTransactionAddCoinGroups");
+                    b.ToTable("DetailTransactionAddCoinGroups", (string)null);
                 });
 
             modelBuilder.Entity("BootCoinApp.Models.DetailTransactionAddCoinUser", b =>
@@ -121,7 +121,7 @@ namespace BootCoinApp.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("DetailTransactionAddCoinUsers");
+                    b.ToTable("DetailTransactionAddCoinUsers", (string)null);
                 });
 
             modelBuilder.Entity("BootCoinApp.Models.GroupUser", b =>
@@ -141,7 +141,7 @@ namespace BootCoinApp.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("GroupUsers");
+                    b.ToTable("GroupUsers", (string)null);
                 });
 
             modelBuilder.Entity("BootCoinApp.Models.HeaderTransactionAddCoinGroup", b =>
@@ -163,7 +163,7 @@ namespace BootCoinApp.Migrations
 
                     b.HasIndex("AdminId");
 
-                    b.ToTable("HeaderTransactionAddCoinGroups");
+                    b.ToTable("HeaderTransactionAddCoinGroups", (string)null);
                 });
 
             modelBuilder.Entity("BootCoinApp.Models.HeaderTransactionAddCoinUser", b =>
@@ -185,7 +185,7 @@ namespace BootCoinApp.Migrations
 
                     b.HasIndex("AdminId");
 
-                    b.ToTable("HeaderTransactionAddCoinUsers");
+                    b.ToTable("HeaderTransactionAddCoinUsers", (string)null);
                 });
 
             modelBuilder.Entity("BootCoinApp.Models.Reward", b =>
@@ -220,7 +220,7 @@ namespace BootCoinApp.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Rewards");
+                    b.ToTable("Rewards", (string)null);
                 });
 
             modelBuilder.Entity("BootCoinApp.Models.TransactionReward", b =>
@@ -252,7 +252,7 @@ namespace BootCoinApp.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("TransactionRewards");
+                    b.ToTable("TransactionRewards", (string)null);
                 });
 
             modelBuilder.Entity("BootCoinApp.Models.User", b =>
@@ -297,7 +297,7 @@ namespace BootCoinApp.Migrations
 
                     b.HasIndex("GroupId");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("BootCoinApp.Models.DetailTransactionAddCoinGroup", b =>

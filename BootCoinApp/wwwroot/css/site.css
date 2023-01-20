@@ -26,15 +26,19 @@ body {
 
 .left-content {
     background-color: #AD1A25;
-    width: 14%;
+    width: 250px;
     min-width: 250px;
     left: 0;
+    z-index: 2;
 }
 
 .right-content {
     background-color: #EFF4F7;
-    width: 86%;
+    width: 100%;
+    height: 100%;
+    padding-left: 250px;
     right: 0;
+    z-index: 1;
 }
 
 .margin-0 {
@@ -123,6 +127,47 @@ a {
     padding: 10px 30px;
 }
 
+
+.row{
+    margin: 0 3%;
+}
+
 .card{
-    margin: 2% 4%;
+    margin: 1%;
+    padding: 1%;
+}
+
+.row-coin-card {
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow: auto;
+}
+
+.col-coin-card-people{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align:center;
+    min-width: 180px;
+    min-height: 180px;
+    background-color: white;
+    border-radius: 20px;
+    margin: 20px 30px;
+}
+
+.col-coin-card-people:hover{
+    cursor: pointer;
+}
+
+.coin-container {
+    position: absolute;
+    right: -15px;
+    top: -5px;
+    width: 60px;
+    background-color: #049BD8;
+    border-radius: 10px;
+    color: white;
 }
