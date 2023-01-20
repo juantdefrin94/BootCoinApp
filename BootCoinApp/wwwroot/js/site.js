@@ -10,6 +10,12 @@ var addRewardText = document.getElementById("add-reward-text");
 var logoutText = document.getElementById("logout-text");
 var addCoinImage = document.getElementById("add-coin-img");
 var addRewardImage = document.getElementById("add-reward-img");
+
+//pop up
+var colCoinPeople = document.getElementsByClassName("col-coin-card-people");
+var popUp = document.getElementById("pop-up");
+
+
 var path = window.location.pathname;
 var page = path.split("/").pop();
 
@@ -107,4 +113,16 @@ logoutButton.addEventListener("mouseleave", () => {
     logoutButton.style.backgroundColor = "transparent";
     logoutText.style.color = "white";
     logoutText.style.fontWeight = "400";
+})
+
+var peopleClick = function () {
+    popUp.style.display = "flex";
+}
+
+for (var i = 0; i < colCoinPeople.length; i++) {
+    colCoinPeople[i].addEventListener("click", peopleClick, false);
+}
+
+popUp.addEventListener("click", () => {
+    popUp.style.display = "none";
 })
