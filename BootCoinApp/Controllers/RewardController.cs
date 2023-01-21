@@ -6,12 +6,12 @@ using System.Diagnostics;
 
 namespace BootCoinApp.Controllers
 {
-    public class HomeController : Controller
+    public class RewardController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<RewardController> _logger;
         private readonly AppDbContext _context;
 
-        public HomeController(ILogger<HomeController> logger, AppDbContext context)
+        public RewardController(ILogger<RewardController> logger, AppDbContext context)
         {
             _logger = logger;
             _context = context;

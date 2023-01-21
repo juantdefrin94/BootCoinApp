@@ -3,7 +3,7 @@
     ViewData["Title"] = "Detail Reward";
 }
 <div class="top d-flex top-container">
-    <form asp-action="DetailReward" asp-controller="Home">
+    <form asp-action="DetailReward" asp-controller="Reward">
         <input type="text" name="query" class="search-bar" placeholder="Search" />
     </form>
 
@@ -61,7 +61,7 @@ else
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form method="post" asp-controller="Home" asp-action="AddMoreReward">
+            <form method="post" asp-controller="Reward" asp-action="AddMoreReward">
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="inputCategory">Category Reward</label>
