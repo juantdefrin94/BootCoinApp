@@ -1,11 +1,14 @@
 using BootCoinApp.Data;
+using BootCoinApp.Interfaces;
+using BootCoinApp.Repository;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
-
+builder.Services.AddScoped<ICategoryRewardRepository, CategoryRewardRepository>();
+builder.Services.AddScoped<IRewardRepository, RewardRepository>();
 // Setting Database Connections
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
@@ -36,5 +39,5 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Reward}/{action=AddReward}/{id?}");
+    pattern: "{controller=CategoryReward}/{action=Index}/{id?}");
 app.Run();

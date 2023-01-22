@@ -1,9 +1,9 @@
-﻿@model CategoryReward
+﻿@model (CategoryReward categoryReward, IEnumerable<Reward> rewards)
 @{
     ViewData["Title"] = "Detail Reward";
 }
-<div class="top d-flex top-container">
-    <form asp-action="DetailReward" asp-controller="Reward">
+<div class="top d-flex justify-content-between top-container">
+    <form asp-action="Index" asp-controller="Reward">
         <input type="text" name="query" class="search-bar" placeholder="Search" />
     </form>
 
@@ -23,13 +23,14 @@
     <img class="d-block" src="#" style="margin: auto; width: 85%;" />
 </div>
 
-@if (Model != null)
+<div class="p-content">
+    <h5 class="fw-bolder">Reward Details - @Model.categoryReward.Name</h5>
+</div>
+
+@if (Model.rewards != null)
 {
-    <div class="p-content">
-        <h5 class="fw-bolder">Reward Details - @Model.Name</h5>
-    </div>
     <div class="row" style="margin: 10px 20px;">
-        @foreach (var item in Model.Rewards)
+        @foreach (var item in Model.rewards)
         {
             <div class="card col" style="width: 19rem;">
                 <img src="..." class="card-img-top" alt="...">
@@ -45,14 +46,17 @@ else
     <p>No item found</p>
 }
 
+
 <!-- Button trigger modal -->
 <div class="d-grid gap-2 col-6 mx-auto">
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#formModal">
+    <a class="btn btn-primary" asp-controller="Reward" asp-action="Create" asp-route-id="@Model.categoryReward.Id">
         Add More
-    </button>
+    </a>
 </div>
+
+
 <!-- Modal -->
-<div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
+@*<div class="modal fade" id="formModal" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -61,19 +65,22 @@ else
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form method="post" asp-controller="Reward" asp-action="AddMoreReward">
+            <form method="post" asp-controller="Reward" asp-action="CreateReward">
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="inputCategory">Category Reward</label>
-                        <input type="text" class="form-control" placeholder="@Model.Name" readonly>
+                        <label for="category_reward">Category Reward</label>
+                        <input class="form-control" placeholder="@Model.categoryReward.Name" readonly>
+                        <span asp-validation-for="@Model.categoryReward.Name" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label for="inputName">Reward Name</label>
-                        <input type="email" class="form-control" id="rewardName" name="rewardName">
+                        <label asp-for="re">Reward Name</label> 
+                        <input for="reward_name" class="form-control" placeholder="Reward Name">
+                        <span asp-validation-for="rewards.ElementAtOrDefault(0).RewardName" class="text-danger"></span>
                     </div>
                     <div class="form-group">
-                        <label for="inputDesc">Reward Description</label>
-                        <textarea class="form-control" id="rewardDescription" name="rewardDescription" rows="3"></textarea>
+                        <label for="reward_desc">Reward Description</label>
+                        <textarea for="reward_desc" class="form-control" rows="3"></textarea>
+                        <span asp-validation-for="rewards.ElementAtOrDefault(0).RewardDescription" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -83,5 +90,5 @@ else
             </form>
         </div>
     </div>
-</div>
+</div>*@
 
