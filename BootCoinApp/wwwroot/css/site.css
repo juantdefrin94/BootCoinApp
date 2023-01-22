@@ -8,6 +8,10 @@ html {
     }
 }
 
+.modal-backdrop {
+    z-index: -1;
+}
+
 html {
     position: relative;
     min-height: 100%;
