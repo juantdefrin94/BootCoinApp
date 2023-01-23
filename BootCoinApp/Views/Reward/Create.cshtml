@@ -29,9 +29,10 @@
 
 <div class="p-content">
     <form method="post" asp-controller="Reward" asp-action="Create" enctype="multipart/form-data">
+        <input type="hidden" asp-for="CategoryId" value="@ViewData["categoryID"]"/>
         <div class="mb-2">
-            <label asp-for="CategoryId">Category Reward</label>
-            <input asp-for="CategoryId" class="form-control" value="@ViewData["categoryID"]" placeholder="@ViewData["categoryName"]" readonly>
+            <label for="category_name">Category Reward</label>
+            <input for="category_name" class="form-control" placeholder="@ViewData["categoryName"]" readonly>
         </div>
         <div class="mb-2">
             <label asp-for="RewardName" class="form-label">Reward Name</label>
