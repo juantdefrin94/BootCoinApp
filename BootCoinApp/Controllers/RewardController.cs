@@ -13,30 +13,57 @@ namespace BootCoinApp.Controllers
         {
             _rewardRepository = rewardRepository;
         }
-        public async Task<IActionResult> Index(int id, string query = "")
+        public async Task<IActionResult> Index(int categoryId, string categoryName)
         {
-            (CategoryReward, IEnumerable<Reward>) models = await _rewardRepository.GetAllByCategory(id, query);
-            return View(models);
+            //(CategoryReward, IEnumerable<Reward>) models = await _rewardRepository.GetAllByCategory(id, query);
+            IEnumerable<Reward> rewards = await _rewardRepository.GetRewardsByCategoryId(categoryId);
+            ViewData["categoryID"] = categoryId;
+            ViewData["categoryName"] = categoryName;
+            return View(rewards);
         }
-        public async Task<IActionResult> Create(int id)
+        public IActionResult Create(int categoryId, string categoryName)
         {
-            Reward reward = await _rewardRepository.GetRewardByCategoryId(id);
-            ViewData["categoryName"] = reward.CategoryReward.Name;
-            ViewData["categoryID"] = reward.CategoryReward.Id;
-            return View();
+            //Reward reward = await _rewardRepository.GetRewardByCategoryId(id);
+            //ViewData["categoryName"] = reward.CategoryReward.Name;
+            Reward reward = new()
+            {
+                CategoryId = categoryId
+            };
+            ViewData["categoryName"] = categoryName;
+            ViewData["categoryID"] = categoryId;
+            return View(reward);
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(int id, Reward reward)
+        public IActionResult Create(int categoryId, string categoryName, Reward reward, IFormFile Photo)
         {
+            if (Photo != null && Photo.Length > 0)
+            {
+                var fileName = Guid.NewGuid().ToString() + Path.GetExtension(Photo.FileName);
+                var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", fileName);
+
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    Photo.CopyTo(fileStream);
+                }
+                reward.Photo = fileName;
+                TryValidateModel(reward);
+            }
             if (!ModelState.IsValid)
             {
-                Reward r = await _rewardRepository.GetRewardByCategoryId(id);
-                ViewData["categoryName"] = r.CategoryReward.Name;
-                ViewData["categoryID"] = r.CategoryReward.Id;
-                return View();
+                Reward r = new()
+                {
+                    CategoryId = categoryId
+                };
+                ViewData["categoryName"] = categoryName;
+                ViewData["categoryID"] = categoryId;
+                //Reward r = await _rewardRepository.GetRewardByCategoryId(reward.CategoryId);
+                //ViewData["categoryName"] = r.CategoryReward.Name;
+                //ViewData["categoryID"] = r.CategoryReward.Id;
+                return View(r);
             }
-            return RedirectToAction("Index");
+            _rewardRepository.Add(reward);
+            return RedirectToAction("Index", new { categoryId, categoryName });
         }
     }
 }

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BootCoinApp.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230120142220_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20230123151040_KeyChanges")]
+    partial class KeyChanges
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -468,8 +468,7 @@ namespace BootCoinApp.Migrations
 
             modelBuilder.Entity("BootCoinApp.Models.Reward", b =>
                 {
-                    b.Navigation("TransactionReward")
-                        .IsRequired();
+                    b.Navigation("TransactionReward");
                 });
 
             modelBuilder.Entity("BootCoinApp.Models.User", b =>
