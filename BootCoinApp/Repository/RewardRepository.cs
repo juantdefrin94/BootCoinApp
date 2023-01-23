@@ -50,6 +50,11 @@ namespace BootCoinApp.Repository
             return await _context.Rewards.Include(r => r.CategoryReward).FirstOrDefaultAsync(r => r.CategoryId == id);
         }
 
+        public async Task<IEnumerable<Reward>> GetRewardsByCategoryId(int id)
+        {
+            return await _context.Rewards.Include(r => r.CategoryReward).Where(r => r.CategoryId == id).ToListAsync();
+        }
+
         public bool Save()
         {
             var saved = _context.SaveChanges();

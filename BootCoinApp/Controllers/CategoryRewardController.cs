@@ -24,18 +24,6 @@ namespace BootCoinApp.Controllers
             return View(category_rewards);
         }
 
-        //[HttpPost]
-        //public IActionResult CreateReward(Reward reward)
-        //{
-        //    if (!ModelState.IsValid)
-        //    {
-        //        return View("AddReward", reward);
-        //    }
-        //    _context.Add(reward);
-        //    _context.SaveChanges();
-        //    return RedirectToAction("DetailReward");
-        //}
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

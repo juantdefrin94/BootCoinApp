@@ -1,4 +1,4 @@
-﻿@model (CategoryReward categoryReward, IEnumerable<Reward> rewards)
+﻿@model IEnumerable<Reward>
 @{
     ViewData["Title"] = "Detail Reward";
 }
@@ -24,13 +24,13 @@
 </div>
 
 <div class="p-content">
-    <h5 class="fw-bolder">Reward Details - @Model.categoryReward.Name</h5>
+    <h5 class="fw-bolder">Reward Details - @ViewData["categoryName"]</h5>
 </div>
 
-@if (Model.rewards != null)
+@if (Model != null)
 {
     <div class="row" style="margin: 10px 20px;">
-        @foreach (var item in Model.rewards)
+        @foreach (var item in Model)
         {
             <div class="card col" style="width: 19rem;">
                 <img src="..." class="card-img-top" alt="...">
@@ -49,7 +49,7 @@ else
 
 <!-- Button trigger modal -->
 <div class="d-grid gap-2 col-6 mx-auto">
-    <a class="btn btn-primary" asp-controller="Reward" asp-action="Create" asp-route-id="@Model.categoryReward.Id">
+    <a class="btn btn-primary" asp-controller="Reward" asp-action="Create" asp-route-categoryId="@ViewData["categoryID"]" asp-route-categoryName="@ViewData["categoryName"]">
         Add More
     </a>
 </div>
