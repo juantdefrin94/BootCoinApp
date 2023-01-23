@@ -2,7 +2,11 @@
 @{
     ViewData["Title"] = "Create Reward";
 }
-<div class="top d-flex justify-content-end align-items-end top-container">
+<div class="top d-flex justify-content-between align-items-center top-container">
+    <form asp-action="Index" asp-controller="Reward" asp-route-id="@ViewData["categoryID"]">
+        <input type="text" name="query" class="search-bar" placeholder="Search" />
+    </form>
+
     <div class="d-inline-flex center-vertical profile">
         <div class="d-flex center-vertical">
             <a class="text-black margin-0" id="main-text">Admin</a>
@@ -39,10 +43,36 @@
             <input asp-for="RewardDescription" class="form-control" placeholder="Reward Description">
             <span asp-validation-for="RewardDescription" class="text-danger"></span>
         </div>
-        <div class="mb-3 form-check">
-            <input type="checkbox" class="form-check-input" id="exampleCheck1">
-            <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        <div class="mb-3">
+            <label asp-for="RequiredCoin" class="form-label">Required Coin</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <button type="button" class="btn btn-outline-secondary" id="decrement">-</button>
+                </div>
+                <input asp-for="RequiredCoin" type="number" class="form-control" id="quantity" value="0">
+                <div class="input-group-append">
+                    <button type="button" class="btn btn-outline-secondary" id="increment">+</button>
+                </div>
+            </div>
+            <span asp-validation-for="RequiredCoin" class="text-danger"></span>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+    $(document).ready(function() {
+      $("#decrement").click(function() {
+        var value = $("#quantity").val();
+        if (value > 0) {
+          value--;
+        }
+        $("#quantity").val(value);
+      });
+      $("#increment").click(function() {
+        var value = $("#quantity").val();
+        value++;
+        $("#quantity").val(value);
+      });
+    });
+</script>

@@ -22,6 +22,7 @@ namespace BootCoinApp.Controllers
         {
             Reward reward = await _rewardRepository.GetRewardByCategoryId(id);
             ViewData["categoryName"] = reward.CategoryReward.Name;
+            ViewData["categoryID"] = reward.CategoryReward.Id;
             return View();
         }
 
@@ -32,6 +33,7 @@ namespace BootCoinApp.Controllers
             {
                 Reward r = await _rewardRepository.GetRewardByCategoryId(id);
                 ViewData["categoryName"] = r.CategoryReward.Name;
+                ViewData["categoryID"] = r.CategoryReward.Id;
                 return View();
             }
             return RedirectToAction("Index");
