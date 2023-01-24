@@ -52,7 +52,7 @@
                 <div class="input-group-prepend">
                     <button type="button" class="btn btn-outline-secondary" id="decrement">-</button>
                 </div>
-                <input asp-for="RequiredCoin" type="number" class="form-control" id="quantity" value="0">
+                <input asp-for="RequiredCoin" type="number" class="form-control" id="quantity" value="1" min="1">
                 <div class="input-group-append">
                     <button type="button" class="btn btn-outline-secondary" id="increment">+</button>
                 </div>
@@ -73,7 +73,7 @@
     $(document).ready(function() {
       $("#decrement").click(function() {
         var value = $("#quantity").val();
-        if (value > 0) {
+        if (value > 1) {
           value--;
         }
         $("#quantity").val(value);
