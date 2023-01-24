@@ -13,10 +13,10 @@ namespace BootCoinApp.Controllers
         {
             _rewardRepository = rewardRepository;
         }
-        public async Task<IActionResult> Index(int categoryId, string categoryName)
+        public async Task<IActionResult> Index(int categoryId, string categoryName, string query = "")
         {
             //(CategoryReward, IEnumerable<Reward>) models = await _rewardRepository.GetAllByCategory(id, query);
-            IEnumerable<Reward> rewards = await _rewardRepository.GetRewardsByCategoryId(categoryId);
+            IEnumerable<Reward> rewards = await _rewardRepository.GetRewardsByCategoryId(categoryId, query);
             ViewData["categoryID"] = categoryId;
             ViewData["categoryName"] = categoryName;
             return View(rewards);
@@ -63,7 +63,7 @@ namespace BootCoinApp.Controllers
                 return View(r);
             }
             _rewardRepository.Add(reward);
-            return RedirectToAction("Index", new { categoryId, categoryName });
+            return RedirectToAction("Index", new { categoryId, categoryName});
         }
     }
 }

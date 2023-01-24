@@ -25,34 +25,39 @@ namespace BootCoinApp.Repository
             return Save();
         }
 
-        public async Task<(CategoryReward, IEnumerable<Reward>)> GetAllByCategory(int id, string query = "")
-        {
-            CategoryReward categoryReward = await _context.CategoryRewards.Include(cr => cr.Rewards)
-                .FirstOrDefaultAsync(cr => cr.Id == id);
+        //public async Task<(CategoryReward, IEnumerable<Reward>)> GetAllByCategory(int id, string query = "")
+        //{
+        //    CategoryReward categoryReward = await _context.CategoryRewards.Include(cr => cr.Rewards)
+        //        .FirstOrDefaultAsync(cr => cr.Id == id);
 
-            if (categoryReward != null) 
+        //    if (categoryReward != null) 
+        //    {
+        //        IEnumerable<Reward> rewards = categoryReward.Rewards;
+        //        if (!string.IsNullOrEmpty(query))
+        //        {
+        //            rewards = rewards.Where(r => r.RewardName.ToLower().Contains(query.ToLower()));
+        //        }
+        //        return ((categoryReward, rewards));
+        //    }
+        //    else
+        //    {
+        //        return default;
+        //    }
+        //}
+
+        //public async Task<Reward> GetRewardByCategoryId(int id)
+        //{
+        //    return await _context.Rewards.Include(r => r.CategoryReward).FirstOrDefaultAsync(r => r.CategoryId == id);
+        //}
+
+        public async Task<IEnumerable<Reward>> GetRewardsByCategoryId(int id, string query = "")
+        {
+            IEnumerable<Reward> rewards = await _context.Rewards.Include(r => r.CategoryReward).Where(r => r.CategoryId == id).ToListAsync();
+            if (!string.IsNullOrEmpty(query))
             {
-                IEnumerable<Reward> rewards = categoryReward.Rewards;
-                if (!string.IsNullOrEmpty(query))
-                {
-                    rewards = rewards.Where(r => r.RewardName.ToLower().Contains(query.ToLower()));
-                }
-                return ((categoryReward, rewards));
+                rewards = rewards.Where(r => r.RewardName.ToLower().Contains(query.ToLower()));
             }
-            else
-            {
-                return default;
-            }
-        }
-
-        public async Task<Reward> GetRewardByCategoryId(int id)
-        {
-            return await _context.Rewards.Include(r => r.CategoryReward).FirstOrDefaultAsync(r => r.CategoryId == id);
-        }
-
-        public async Task<IEnumerable<Reward>> GetRewardsByCategoryId(int id)
-        {
-            return await _context.Rewards.Include(r => r.CategoryReward).Where(r => r.CategoryId == id).ToListAsync();
+            return rewards;
         }
 
         public bool Save()

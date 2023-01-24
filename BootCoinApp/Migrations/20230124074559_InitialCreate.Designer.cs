@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BootCoinApp.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230123151040_KeyChanges")]
-    partial class KeyChanges
+    [Migration("20230124074559_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -250,8 +250,7 @@ namespace BootCoinApp.Migrations
 
                     b.HasIndex("AdminId");
 
-                    b.HasIndex("RewardId")
-                        .IsUnique();
+                    b.HasIndex("RewardId");
 
                     b.HasIndex("UserId");
 
@@ -399,8 +398,8 @@ namespace BootCoinApp.Migrations
                         .IsRequired();
 
                     b.HasOne("BootCoinApp.Models.Reward", "Reward")
-                        .WithOne("TransactionReward")
-                        .HasForeignKey("BootCoinApp.Models.TransactionReward", "RewardId")
+                        .WithMany("TransactionRewards")
+                        .HasForeignKey("RewardId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -468,7 +467,7 @@ namespace BootCoinApp.Migrations
 
             modelBuilder.Entity("BootCoinApp.Models.Reward", b =>
                 {
-                    b.Navigation("TransactionReward");
+                    b.Navigation("TransactionRewards");
                 });
 
             modelBuilder.Entity("BootCoinApp.Models.User", b =>
