@@ -114,7 +114,7 @@ a {
     background: transparent url() no-repeat 10px center;
     background-image: url(../search.png);
     padding: 10px 35px;
-    width: 50%;
+    /*width: 50%;*/
     border-radius: 10px;
 }
 
@@ -133,7 +133,7 @@ a {
 
 
 .row{
-    margin: 0 3%;
+    /*margin: 0 3%;*/
 }
 
 .card{

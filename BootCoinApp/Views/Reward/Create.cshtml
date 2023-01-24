@@ -2,16 +2,18 @@
 @{
     ViewData["Title"] = "Create Reward";
 }
-<div class="top d-flex justify-content-between align-items-center top-container">
-    <form asp-action="Index" asp-controller="Reward" asp-route-categoryId="@ViewData["categoryID"]" asp-route-categoryName="@ViewData["categoryName"]">
-        <input type="text" name="query" class="search-bar" placeholder="Search" />
-    </form>
+<div class="top row justify-content-between align-items-center top-container">
+    <div class="col-md-6">
+        <form class="" asp-action="Index" asp-controller="Reward" asp-route-categoryId="@ViewData["categoryID"]" asp-route-categoryName="@ViewData["categoryName"]">
+            <input type="text" name="query" class="search-bar w-100" placeholder="Search" />
+        </form>
+    </div>   
 
-    <div class="d-inline-flex center-vertical profile">
-        <div class="d-flex center-vertical">
+    <div class="col-md-6">
+        <div class="d-flex justify-content-end center-vertical">
             <a class="text-black margin-0" id="main-text">Admin</a>
+            <img class="ml-10" src="~/assets/bootcoin.png" width="30" height="30" />
         </div>
-        <img class="ml-10" src="~/assets/bootcoin.png" width="30" height="30" />
     </div>
 </div>
 
