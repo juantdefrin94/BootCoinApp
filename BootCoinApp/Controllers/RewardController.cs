@@ -40,7 +40,7 @@ namespace BootCoinApp.Controllers
             if (Photo != null && Photo.Length > 0)
             {
                 var fileName = Guid.NewGuid().ToString() + Path.GetExtension(Photo.FileName);
-                var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", fileName);
+                var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/rewards", fileName);
 
                 using (var fileStream = new FileStream(filePath, FileMode.Create))
                 {
