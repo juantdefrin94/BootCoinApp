@@ -18,17 +18,6 @@
     </div>
 </div>
 
-@*<div class="top d-flex top-container">
-    <input class="search-bar" type="text" placeholder="Search" />
-
-    <div class="d-inline-flex center-vertical profile">
-        <div class="d-flex center-vertical">
-            <a class="text-black margin-0" id="main-text">Admin</a>
-        </div>
-        <img class="ml-10" src="../assets/bootcoin.png" width="30" height="30" />
-    </div>
-</div>*@
-
 <div class="title p-content">
     <h3>@ViewData["Title"]</h3>
 </div>
@@ -48,8 +37,15 @@
             <img src="..." class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">@item.Name</h5>
+                <p class="text-danger">@item.Rewards.Count Rewards</p>
                 <a asp-controller="Reward" asp-action="Index" asp-route-categoryId="@item.Id" asp-route-categoryName="@item.Name" class="btn btn-primary">Details</a>
             </div>
         </div>
     }
 </div>
+@*
+<div class="d-grid gap-2 col-6 mx-auto">
+    <a class="btn btn-primary" asp-controller="Reward" asp-action="Create" asp-route-categoryId="@ViewData["categoryID"]" asp-route-categoryName="@ViewData["categoryName"]">
+        Add More
+    </a>
+</div>*@
