@@ -3,7 +3,7 @@
     ViewData["Title"] = "Detail Reward";
 }
 <div class="top d-flex justify-content-between top-container">
-    <form asp-action="Index" asp-controller="Reward">
+    <form asp-action="Index" asp-controller="Reward" asp-route-categoryId="@ViewData["categoryID"]" asp-route-categoryName="@ViewData["categoryName"]">
         <input type="text" name="query" class="search-bar" placeholder="Search" />
     </form>
 
@@ -33,7 +33,7 @@
         @foreach (var item in Model)
         {
             <div class="card col" style="width: 19rem;">
-                <img src="..." class="card-img-top" alt="...">
+                <img src="~/images/@item.Photo" class="card-img-top" alt="..." height="100" width="60">
                 <div class="card-body">
                     <h5 class="card-title">@item.RewardName</h5>
                 </div>
