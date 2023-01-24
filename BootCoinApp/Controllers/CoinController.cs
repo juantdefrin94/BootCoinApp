@@ -1,4 +1,5 @@
 ﻿using BootCoinApp.Data;
+using BootCoinApp.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BootCoinApp.Controllers
@@ -12,7 +13,9 @@ namespace BootCoinApp.Controllers
         }
         public IActionResult AddCoin()
         {
-            return View();
+            List<User> users = _context.Users.ToList();
+
+            return View(users);
         }
     }
 }

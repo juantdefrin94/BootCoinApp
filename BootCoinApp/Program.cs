@@ -17,6 +17,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 var app = builder.Build();
 
+Console.WriteLine(args);
+
 if(args.Length == 1 && args[0].ToLower() == "seeddata")
 {
     Seed.SeedData(app);

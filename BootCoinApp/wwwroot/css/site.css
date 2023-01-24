@@ -118,6 +118,10 @@ a {
     border-radius: 10px;
 }
 
+.width-100{
+    width: 100%;
+}
+
 .profile{
     width: 50%;
     justify-content: right;
@@ -149,14 +153,16 @@ a {
     overflow: auto;
 }
 
-.col-coin-card-people{
+.col-coin-card-people {
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    text-align:center;
+    text-align: center;
     min-width: 180px;
     min-height: 180px;
+    max-width: 240px;
+    max-height: 240px;
     background-color: white;
     border-radius: 20px;
     margin: 20px 30px;
