@@ -45,6 +45,14 @@ body {
     z-index: 1;
 }
 
+main {
+    padding-left: 250px;
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    right: 0;
+}
+
 .margin-0 {
     margin: 0;
 }
@@ -114,12 +122,8 @@ a {
     background: transparent url() no-repeat 10px center;
     background-image: url(../search.png);
     padding: 10px 35px;
-    /*width: 50%;*/
+    width: 50%;
     border-radius: 10px;
-}
-
-.width-100{
-    width: 100%;
 }
 
 .profile{
@@ -141,15 +145,15 @@ a {
 }
 
 .card{
-    margin: 1%;
+    margin: 1% 0.5%;
     padding: 1%;
 }
 
 .row-coin-card {
-    height: 100%;
+    max-height: 500px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-evenly;
     overflow: auto;
 }
 
@@ -162,7 +166,7 @@ a {
     min-width: 180px;
     min-height: 180px;
     max-width: 240px;
-    max-height: 240px;
+    max-height: 200px;
     background-color: white;
     border-radius: 20px;
     margin: 20px 30px;
@@ -180,6 +184,7 @@ a {
     background-color: #049BD8;
     border-radius: 10px;
     color: white;
+    z-index: 2;
 }
 
 #pop-up {
