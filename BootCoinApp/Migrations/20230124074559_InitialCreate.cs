@@ -295,8 +295,7 @@ namespace BootCoinApp.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_TransactionRewards_RewardId",
                 table: "TransactionRewards",
-                column: "RewardId",
-                unique: true);
+                column: "RewardId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_TransactionRewards_UserId",

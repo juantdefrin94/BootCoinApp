@@ -22,9 +22,9 @@ namespace BootCoinApp.Configurations
             builder.Property(x => x.Photo)
                 .IsRequired();
 
-            builder.HasOne(x => x.TransactionReward)
+            builder.HasMany(x => x.TransactionRewards)
                 .WithOne(x => x.Reward)
-                .HasForeignKey<TransactionReward>(x => x.RewardId);
+                .HasForeignKey(x => x.RewardId);
 
             builder.HasOne(x => x.CategoryReward)
                 .WithMany(x => x.Rewards)

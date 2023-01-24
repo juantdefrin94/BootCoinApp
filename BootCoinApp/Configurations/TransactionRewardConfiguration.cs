@@ -18,6 +18,10 @@ namespace BootCoinApp.Configurations
             builder.HasOne(x => x.User)
                 .WithMany(x => x.TransactionRewards)
                 .HasForeignKey(x => x.UserId);
+
+            builder.HasOne(x => x.Reward)
+                .WithMany(x => x.TransactionRewards)
+                .HasForeignKey(x => x.RewardId);
         }
     }
 }
