@@ -65,9 +65,9 @@ main {
     margin: 2vh 2vh;
 }
 
-    #main-logo:hover {
-        cursor: pointer;
-    }
+#main-logo:hover {
+    cursor: pointer;
+}
 
 #main-text {
     font-size: 20px;
@@ -76,6 +76,33 @@ main {
 
 a {
     text-decoration: none
+}
+
+a:hover {
+    cursor: pointer;
+}
+
+.button-coin {
+    margin: 25px 0;
+    background-color: #EEEEEE;
+    padding: 1% 6%;
+    color: dimgray;
+    font-size: larger;
+}
+
+.selected {
+    background-color: #FCCF00;
+    color: black;
+}
+
+.left-button{
+    border-start-start-radius: 10px;
+    border-end-start-radius: 10px;
+}
+
+.right-button{
+    border-start-end-radius: 10px;
+    border-end-end-radius: 10px;
 }
 
 .ml-10 {
@@ -176,6 +203,10 @@ a {
     cursor: pointer;
 }
 
+.selected-card-people {
+    border: 5px solid #AD1A25;
+}
+
 .coin-container {
     position: absolute;
     right: -15px;
@@ -207,4 +238,9 @@ a {
     width: 500px;
     height: 500px;
     background-color: white;
+}
+
+#multiple-text {
+    color: #AD1A25;
+    font-weight: bolder;
 }

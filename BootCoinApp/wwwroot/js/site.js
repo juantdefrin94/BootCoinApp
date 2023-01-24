@@ -10,17 +10,18 @@ var addRewardText = document.getElementById("add-reward-text");
 var logoutText = document.getElementById("logout-text");
 var addCoinImage = document.getElementById("add-coin-img");
 var addRewardImage = document.getElementById("add-reward-img");
+var multiple = document.getElementById("multiple");
 
-//pop up
 var colCoinPeople = document.getElementsByClassName("col-coin-card-people");
-var popUp = document.getElementById("pop-up");
-
 
 var path = window.location.pathname;
 var page = path.split("/").pop();
 
 var hoverMenu = 1;
 var currMenu = 2;
+
+var multipleSelected = false;
+const peopleSelected = [];
 
 if (page == "AddCoin") {
     currMenu = 1;
@@ -115,14 +116,26 @@ logoutButton.addEventListener("mouseleave", () => {
     logoutText.style.fontWeight = "400";
 })
 
-var peopleClick = function () {
-    popUp.style.display = "flex";
+
+function multipleChange(){
+    if (!multipleSelected) {
+        multipleSelected = true;
+    } else {
+        multipleSelected = false;
+    }
+}
+
+multiple.addEventListener("click", multipleChange);
+
+var peopleClick = function (idx) {
+    if (multipleSelected) {
+        console.log("ke check");
+    } else {
+        console.log("ga ke check");
+    }
 }
 
 for (var i = 0; i < colCoinPeople.length; i++) {
-    colCoinPeople[i].addEventListener("click", peopleClick, false);
+    console.log("TEST");
+    colCoinPeople[i].addEventListener("click", peopleClick(i), false);
 }
-
-popUp.addEventListener("click", () => {
-    popUp.style.display = "none";
-})
