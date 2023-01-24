@@ -20,11 +20,11 @@
         <input type="text" name="query" class="search-bar width-100" placeholder="Search" />
     </form>
 
-    <div class="d-inline-flex center-vertical profile">
-        <div class="d-flex center-vertical">
+    <div class="col-md-6">
+        <div class="d-flex justify-content-end center-vertical">
             <a class="text-black margin-0" id="main-text">Admin</a>
+            <img class="ml-10" src="~/assets/bootcoin.png" width="30" height="30" />
         </div>
-        <img class="ml-10" src="./assets/bootcoin.png" width="30" height="30" />
     </div>
 </div>
 
@@ -46,7 +46,7 @@
         @foreach (var item in Model)
         {
             <div class="card col" style="width: 19rem;">
-                <img src="..." class="card-img-top" alt="...">
+                <img src="~/images/@item.Photo" class="card-img-top" alt="..." height="100" width="60">
                 <div class="card-body">
                     <h5 class="card-title">@item.RewardName</h5>
                 </div>
