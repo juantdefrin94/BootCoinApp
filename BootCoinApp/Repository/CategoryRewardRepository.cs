@@ -26,9 +26,14 @@ namespace BootCoinApp.Repository
             return Save();
         }
 
-        public async Task<IEnumerable<CategoryReward>> GetAll()
+        public async Task<IEnumerable<CategoryReward>> GetAll(string query = "")
         {
-            return await _context.CategoryRewards.ToListAsync();
+            IEnumerable<CategoryReward> categoryRewards = await _context.CategoryRewards.Include(cr => cr.Rewards).ToListAsync();
+            if (!string.IsNullOrEmpty(query))
+            {
+                categoryRewards = categoryRewards.Where(cr => cr.Name.ToLower().Contains(query.ToLower()));
+            }
+            return categoryRewards;
         }
 
         public bool Save()

@@ -3,13 +3,18 @@
     ViewData["Title"] = "Add Reward";
 }
 
-<div class="top d-flex top-container">
-    <input class="search-bar" type="text" placeholder="Search" />
-    <div class="d-inline-flex center-vertical profile">
-        <div class="d-flex center-vertical">
+<div class="top row justify-content-between align-items-center top-container">
+    <div class="col-md-6">
+        <form class="" asp-action="Index" asp-controller="CategoryReward">
+            <input type="text" name="query" class="search-bar w-100" placeholder="Search" />
+        </form>
+    </div>
+
+    <div class="col-md-6">
+        <div class="d-flex justify-content-end center-vertical">
             <a class="text-black margin-0" id="main-text">Admin</a>
+            <img class="ml-10" src="~/assets/bootcoin.png" width="30" height="30" />
         </div>
-        <img class="ml-10" src="../assets/bootcoin.png" width="30" height="30" />
     </div>
 </div>
 
@@ -32,8 +37,15 @@
             <img src="..." class="card-img-top" alt="...">
             <div class="card-body">
                 <h5 class="card-title">@item.Name</h5>
+                <p class="text-danger">@item.Rewards.Count Rewards</p>
                 <a asp-controller="Reward" asp-action="Index" asp-route-categoryId="@item.Id" asp-route-categoryName="@item.Name" class="btn btn-primary">Details</a>
             </div>
         </div>
     }
 </div>
+@*
+<div class="d-grid gap-2 col-6 mx-auto">
+    <a class="btn btn-primary" asp-controller="Reward" asp-action="Create" asp-route-categoryId="@ViewData["categoryID"]" asp-route-categoryName="@ViewData["categoryName"]">
+        Add More
+    </a>
+</div>*@
