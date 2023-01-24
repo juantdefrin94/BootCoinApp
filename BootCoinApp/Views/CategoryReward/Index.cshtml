@@ -3,7 +3,22 @@
     ViewData["Title"] = "Add Reward";
 }
 
-<div class="top d-flex top-container">
+<div class="top row justify-content-between align-items-center top-container">
+    <div class="col-md-6">
+        <form class="" asp-action="Index" asp-controller="CategoryReward">
+            <input type="text" name="query" class="search-bar w-100" placeholder="Search" />
+        </form>
+    </div>
+
+    <div class="col-md-6">
+        <div class="d-flex justify-content-end center-vertical">
+            <a class="text-black margin-0" id="main-text">Admin</a>
+            <img class="ml-10" src="~/assets/bootcoin.png" width="30" height="30" />
+        </div>
+    </div>
+</div>
+
+@*<div class="top d-flex top-container">
     <input class="search-bar" type="text" placeholder="Search" />
 
     <div class="d-inline-flex center-vertical profile">
@@ -12,7 +27,7 @@
         </div>
         <img class="ml-10" src="../assets/bootcoin.png" width="30" height="30" />
     </div>
-</div>
+</div>*@
 
 <div class="title p-content">
     <h3>@ViewData["Title"]</h3>

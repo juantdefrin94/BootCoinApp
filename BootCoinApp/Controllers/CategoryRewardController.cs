@@ -18,9 +18,9 @@ namespace BootCoinApp.Controllers
             _categoryRewardRepository = categoryRewardRepository;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string query = "")
         {
-            IEnumerable<CategoryReward> category_rewards = await _categoryRewardRepository.GetAll();
+            IEnumerable<CategoryReward> category_rewards = await _categoryRewardRepository.GetAll(query);
             return View(category_rewards);
         }
 
