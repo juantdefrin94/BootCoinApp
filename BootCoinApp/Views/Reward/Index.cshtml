@@ -39,6 +39,7 @@
                 <div class="card-body">
                     <h5 class="card-title">@item.RewardName</h5>
                 </div>
+                <p class="text-danger">@item.RequiredCoin Bootcoin</p>
             </div>
         }
     </div>
@@ -48,8 +49,6 @@ else
     <p>No item found</p>
 }
 
-
-<!-- Button trigger modal -->
 <div class="d-grid gap-2 col-6 mx-auto">
     <a class="btn btn-primary" asp-controller="Reward" asp-action="Create" asp-route-categoryId="@ViewData["categoryID"]" asp-route-categoryName="@ViewData["categoryName"]">
         Add More
