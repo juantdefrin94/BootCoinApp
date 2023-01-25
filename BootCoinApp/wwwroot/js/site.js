@@ -24,6 +24,8 @@ var themeContainerChange = document.getElementsByClassName("theme-container-chan
 var themeTextChange = document.getElementsByClassName("theme-text-change");
 var themeBackgroundChange = document.getElementsByClassName("theme-background-change");
 
+var switchTheme = document.getElementById("switch-theme");
+
 var path = window.location.pathname;
 var page = path.split("/").pop();
 
@@ -39,6 +41,16 @@ const groupSelected = [];
 const elementGroupSelected = [];
 
 var isDark = false
+
+console.log("isDark = " + localStorage.getItem("isDark"));
+
+if (localStorage.getItem("isDark") != null && localStorage.getItem("isDark") == "true") {
+    isDark = true;
+    changeThemeDefault();
+}
+
+console.log("isDark = " + isDark + " after if");
+
 
 if (page == "CoinPeople" || page == "CoinGroup") {
     currMenu = 1;
@@ -239,7 +251,10 @@ function multipleGroupChange() {
 }
 
 function changeTheme() {
+    console.log("masuk change theme");
     if (!isDark) {
+
+        localStorage.setItem("isDark", true);
 
         isDark = true;
         console.log("masuk dark");
@@ -266,6 +281,8 @@ function changeTheme() {
         }
     } else {
 
+        localStorage.setItem("isDark", false);
+
         isDark = false;
         console.log("masuk light");
         let len = 0;
@@ -288,6 +305,33 @@ function changeTheme() {
         len = themeBackgroundChange.length;
         for (let i = 0; i < len; i++) {
             themeBackgroundChange[i].classList.remove("dark-mode-3");
+        }
+    }
+}
+
+function changeThemeDefault() {
+    console.log("masuk change theme default");
+    if (isDark) {
+        //change theme to dark
+        /* changing search bar into dark mode */
+
+        switchTheme.checked = true;
+
+        searchBar[0].classList.add("dark-mode-2");
+
+        len = themeContainerChange.length;
+        for (let i = 0; i < len; i++) {
+            themeContainerChange[i].classList.add("dark-mode-1");
+        }
+
+        len = themeTextChange.length;
+        for (let i = 0; i < len; i++) {
+            themeTextChange[i].classList.add("dark-mode-text");
+        }
+
+        len = themeBackgroundChange.length;
+        for (let i = 0; i < len; i++) {
+            themeBackgroundChange[i].classList.add("dark-mode-3");
         }
     }
 }
