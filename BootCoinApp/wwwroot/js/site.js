@@ -30,7 +30,7 @@ var multipleGroupSelected = false;
 const groupSelected = [];
 const elementGroupSelected = [];
 
-if (page == "CoinPeople") {
+if (page == "CoinPeople" || page == "CoinGroup") {
     currMenu = 1;
     changeToDefault(addRewardButton);
 } else {
