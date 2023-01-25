@@ -3,21 +3,21 @@
     ViewData["Title"] = "Add Coin";
 }
 
-<div class="top d-flex top-container">
+<div class="top d-flex top-container theme-container-change">
     <input class="search-bar" type="text" placeholder="Search" />
     <div class="d-inline-flex center-vertical profile">
         <div class="d-flex center-vertical">
-            <a class="text-black margin-0" id="main-text">Admin</a>
+            <a class="margin-0 theme-text-change" id="main-text">Admin</a>
         </div>
         <img class="ml-10" src="../assets/bootcoin.png" width="30" height="30" />
     </div>
 </div>
 
-<div class="title p-content">
+<div class="title theme-text-change theme-container-change">
     <h3>@ViewData["Title"]</h3>
 </div>
 
-<div class="d-flex justify-content-center">
+<div class="d-flex justify-content-center theme-background-change">
     <a class="button-coin fw-bolder left-button" asp-area="" asp-controller="Coin" asp-action="CoinPeople">People</a>
     <a class="button-coin fw-bolder selected right-button">Group</a>
 </div>
@@ -27,22 +27,22 @@
     <div class="row-coin-card-group">
         @foreach (var item in Model)
         {
-            <div class="col-coin-card-group" data-id="@item.Id" data-name="@item.GroupName" onclick="changeColCoinGroupAttr(this)">
+            <div class="col-coin-card-group theme-container-change" data-id="@item.Id" data-name="@item.GroupName" onclick="changeColCoinGroupAttr(this)">
                 <div class="coin-container">
                     <h6>@item.Bootcoin</h6>
                 </div>
                 <div class="card-body d-flex align-items-center justify-content-center">
-                    <p style="font-size: 100px; font-weight: bolder;">@item.GroupName</p>
+                    <p class="theme-text-change" style="font-size: 100px; font-weight: bolder;">@item.GroupName</p>
                 </div>
             </div>
         }
 
-        <div class="col-coin-card-group">
+        <div class="col-coin-card-group theme-container-change">
             <div class="card-body d-flex align-items-center justify-content-center" style="text-align:center; flex-direction: column;">
                 <div>
                     <img src="../assets/bootcoin.png" alt="..." width="100" height="100">
                 </div>
-                <h6>Add New</h6>
+                <h6 class="theme-text-change">Add New</h6>
             </div>
         </div>
 
@@ -53,7 +53,7 @@ else
     <p>No item found</p>
 }
 
-<div class="d-flex justify-content-center" style="margin-top: 10px;">
+<div class="d-flex justify-content-center theme-background-change" style="margin-top: 10px;">
     <input type="checkbox" id="multiple-group" name="multiple" value="multiple" onclick="multipleGroupChange()">
     <label for="multiple" style="margin-left: 10px;" id="multiple-text">Multiple select</label>
 </div>

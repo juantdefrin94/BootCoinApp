@@ -38,7 +38,7 @@ var multipleGroupSelected = false;
 const groupSelected = [];
 const elementGroupSelected = [];
 
-var isDark = false;
+var isDark = false
 
 if (page == "CoinPeople" || page == "CoinGroup") {
     currMenu = 1;
@@ -240,6 +240,7 @@ function multipleGroupChange() {
 
 function changeTheme() {
     if (!isDark) {
+
         isDark = true;
         console.log("masuk dark");
         let len = 0;
@@ -264,6 +265,7 @@ function changeTheme() {
             themeBackgroundChange[i].classList.add("dark-mode-3");
         }
     } else {
+
         isDark = false;
         console.log("masuk light");
         let len = 0;

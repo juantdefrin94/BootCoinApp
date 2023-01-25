@@ -210,9 +210,15 @@ a:hover {
 .search-bar {
     background: transparent url() no-repeat 10px center;
     background-image: url(../search.png);
+    background-color: #EFF4F7;
     padding: 10px 35px;
     width: 50%;
+    border: hidden;
     border-radius: 10px;
+}
+
+.search-bar::placeholder {
+    color: #AEAEAE;
 }
 
 .profile{
