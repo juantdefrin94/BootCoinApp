@@ -125,17 +125,11 @@ function multipleChange(){
     }
 }
 
-multiple.addEventListener("click", multipleChange);
-
-var peopleClick = function (idx) {
-    if (multipleSelected) {
-        console.log("ke check");
-    } else {
-        console.log("ga ke check");
-    }
+function changeColCoinAttr(idx) {
+    colCoinPeople[idx]
 }
 
-for (var i = 0; i < colCoinPeople.length; i++) {
-    console.log("TEST");
-    colCoinPeople[i].addEventListener("click", peopleClick(i), false);
+var peopleCount = colCoinPeople.length;
+for (var i = 0; i < peopleCount; i++) {
+    colCoinPeople[i].addEventListener("click", changeColCoinAttr());
 }

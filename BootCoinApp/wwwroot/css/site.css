@@ -177,7 +177,8 @@ a:hover {
 }
 
 .row-coin-card {
-    max-height: 500px;
+    max-height: 50%;
+    min-height: 25%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
