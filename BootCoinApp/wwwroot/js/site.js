@@ -22,6 +22,7 @@ var currMenu = 2;
 
 var multipleSelected = false;
 const peopleSelected = [];
+const elementSelected = [];
 
 if (page == "AddCoin") {
     currMenu = 1;
@@ -70,16 +71,6 @@ addCoinButton.addEventListener("mouseleave", () => {
     changeToDefault(addCoinButton);
 })
 
-//addCoinImage.addEventListener("click", () => {
-//    currMenu = 1;
-//    changeToDefault(addCoinButton);
-//})
-
-//addCoinText.addEventListener("click", () => {
-//    currMenu = 1;
-//    changeToDefault(addCoinButton);
-//})
-
 addRewardButton.addEventListener("mouseover", () => {
     if (hoverMenu == 1) {
         changeAttribute(addRewardButton, addCoinButton, addRewardText, addCoinText);
@@ -92,17 +83,6 @@ addRewardButton.addEventListener("mouseover", () => {
 addRewardButton.addEventListener("mouseleave", () => {
     changeToDefault(addRewardButton);
 })
-
-//addRewardImage.addEventListener("click", () => {
-//    console.log("masuk reward img click");
-//    currMenu = 2;
-//    changeToDefault(addRewardButton);
-//})
-
-//addRewardText.addEventListener("click", () => {
-//    currMenu = 2;
-//    changeToDefault(addRewardButton);
-//})
 
 logoutButton.addEventListener("mouseover", () => {
     logoutButton.style.backgroundColor = "#FCCF00";
@@ -125,11 +105,67 @@ function multipleChange(){
     }
 }
 
-function changeColCoinAttr(idx) {
-    colCoinPeople[idx]
+function changeColCoinAttr(element) {
+    let id = element.getAttribute("data-id");
+    let len = peopleSelected.length;
+    let isExist = false;
+    if (multipleSelected) {
+        for (let i = 0; i < len; i++) {
+            if (peopleSelected[i] == id) {
+                isExist = true;
+                var index = peopleSelected.indexOf(id);
+                peopleSelected.splice(index, 1);
+
+                index = elementSelected.indexOf(element);
+                elementSelected.splice(index, 1);
+            }
+        }
+        if (!isExist) {
+            element.classList.add("selected-card-people");
+            peopleSelected.push(id);
+            elementSelected.push(element);
+        } else {
+            element.classList.remove("selected-card-people");
+        }
+
+    } else {
+        if (len == 1) {
+            if (peopleSelected[0] == id) {
+
+                var index = peopleSelected.indexOf(id);
+                peopleSelected.splice(index, 1);
+
+                index = elementSelected.indexOf(element);
+                elementSelected.splice(index, 1);
+
+                element.classList.remove("selected-card-people");
+            }
+        } else {
+            element.classList.add("selected-card-people");
+            peopleSelected.push(id);
+            elementSelected.push(element);
+        }
+    }
+    console.log(peopleSelected);
+    console.log(elementSelected);
 }
 
-var peopleCount = colCoinPeople.length;
-for (var i = 0; i < peopleCount; i++) {
-    colCoinPeople[i].addEventListener("click", changeColCoinAttr());
+function multipleChange() {
+    if (!multipleSelected) {
+        multipleSelected = true;
+    } else {
+        //sisakan 1 selected
+        let len = peopleSelected.length;
+        for (let i = len; i >= 2; i--) {
+                     
+            elementSelected[i - 1].classList.remove("selected-card-people");
+
+            elementSelected.pop();
+            peopleSelected.pop();
+
+            console.log(peopleSelected);
+        }
+
+        multipleSelected = false;
+    }
 }

@@ -25,11 +25,11 @@
 @if (Model != null){   
     <div class="row-coin-card">
         @foreach (var item in Model){
-            <div class="col-coin-card-people" data-id="@item.Id" data-name="@item.FullName">
+            <div class="col-coin-card-people " data-id="@item.Id" data-name="@item.FullName" onclick="changeColCoinAttr(this)">
                 <div class="coin-container">
                     <h6>@item.Bootcoin</h6>
                 </div>
-                <div class="card-body col-coin-card-people" style="text-align:center;">
+                <div class="card-body" style="text-align:center;">
                     <div>
                         <img src="../assets/bootcoin.png" alt="..." width="100" height="100">
                     </div>
@@ -39,7 +39,7 @@
         }
 
         <div class="col-coin-card-people">
-            <div class="card-body col-coin-card-people" style="text-align:center;">
+            <div class="card-body" style="text-align:center;">
                 <div>
                     <img src="../assets/bootcoin.png" alt="..." width="100" height="100">
                 </div>
@@ -55,6 +55,6 @@ else
 }
 
 <div class="d-flex justify-content-center" style="margin-top: 10px;">
-    <input type="checkbox" id="multiple" name="multiple" value="multiple" onclick="multipleChange">
+    <input type="checkbox" id="multiple" name="multiple" value="multiple" onclick="multipleChange()">
     <label for="multiple" style="margin-left: 10px;" id="multiple-text">Multiple select</label>
 </div>
