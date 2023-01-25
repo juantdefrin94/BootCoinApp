@@ -52,6 +52,12 @@
                 <a style="color: white" id="add-reward-text" asp-area="" asp-controller="CategoryReward" asp-action="Index">Add Reward</a>
             </div>
         </div>
+        <div class="d-flex justify-content-center" style="margin-top: 10px;">
+            <label class="switch">
+                <input type="checkbox" id="switch-theme" onclick="changeTheme()">
+                <span class="slider round"></span>
+            </label>
+        </div>
         <div class="position-absolute" style="bottom: 10px;">
             <div> <img src="../assets/bootcoin-banner.png" width=239 height=249/> </div>
             <hr style="background-color: white; height: 3px; margin: 20px 30px;"/>
@@ -64,7 +70,7 @@
         </div>
     </div>
 
-    <div class="fixed-menu right-content">
+    <div class="fixed-menu right-content theme-background-change">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>

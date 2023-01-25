@@ -16,6 +16,14 @@ var multipleGroup = document.getElementById("multiple-group");
 var colCoinPeople = document.getElementsByClassName("col-coin-card-people");
 var colCoinGroup = document.getElementsByClassName("col-coin-card-group");
 
+//switch theme
+var searchBar = document.getElementsByClassName("search-bar");
+var topContainer = document.getElementsByClassName("top-container");
+var title = document.getElementsByClassName("title");
+var themeContainerChange = document.getElementsByClassName("theme-container-change");
+var themeTextChange = document.getElementsByClassName("theme-text-change");
+var themeBackgroundChange = document.getElementsByClassName("theme-background-change");
+
 var path = window.location.pathname;
 var page = path.split("/").pop();
 
@@ -29,6 +37,8 @@ const elementPeopleSelected = [];
 var multipleGroupSelected = false;
 const groupSelected = [];
 const elementGroupSelected = [];
+
+var isDark = false;
 
 if (page == "CoinPeople" || page == "CoinGroup") {
     currMenu = 1;
@@ -225,5 +235,57 @@ function multipleGroupChange() {
         }
 
         multipleGroupSelected = false;
+    }
+}
+
+function changeTheme() {
+    if (!isDark) {
+        isDark = true;
+        console.log("masuk dark");
+        let len = 0;
+
+        //change theme to dark
+        /* changing search bar into dark mode */
+
+        searchBar[0].classList.add("dark-mode-2");
+
+        len = themeContainerChange.length;
+        for (let i = 0; i < len; i++) {
+            themeContainerChange[i].classList.add("dark-mode-1");
+        }
+
+        len = themeTextChange.length;
+        for (let i = 0; i < len; i++) {
+            themeTextChange[i].classList.add("dark-mode-text");
+        }
+
+        len = themeBackgroundChange.length;
+        for (let i = 0; i < len; i++) {
+            themeBackgroundChange[i].classList.add("dark-mode-3");
+        }
+    } else {
+        isDark = false;
+        console.log("masuk light");
+        let len = 0;
+
+        //change theme to light
+        /* changing search bar into light mode */
+
+        searchBar[0].classList.remove("dark-mode-2");
+
+        len = themeContainerChange.length;
+        for (let i = 0; i < len; i++) {
+            themeContainerChange[i].classList.remove("dark-mode-1");
+        }
+
+        len = themeTextChange.length;
+        for (let i = 0; i < len; i++) {
+            themeTextChange[i].classList.remove("dark-mode-text");
+        }
+
+        len = themeBackgroundChange.length;
+        for (let i = 0; i < len; i++) {
+            themeBackgroundChange[i].classList.remove("dark-mode-3");
+        }
     }
 }
