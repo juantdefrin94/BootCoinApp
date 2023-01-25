@@ -1,0 +1,60 @@
+﻿@model IEnumerable<User>
+@{
+    ViewData["Title"] = "Add Coin";
+}
+
+<div class="top d-flex top-container">
+    <input class="search-bar" type="text" placeholder="Search" />
+    <div class="d-inline-flex center-vertical profile">
+        <div class="d-flex center-vertical">
+            <a class="text-black margin-0" id="main-text">Admin</a>
+        </div>
+        <img class="ml-10" src="../assets/bootcoin.png" width="30" height="30" />
+    </div>
+</div>
+
+<div class="title p-content">
+    <h3>@ViewData["Title"]</h3>
+</div>
+
+<div class="d-flex justify-content-center">
+    <a class="button-coin fw-bolder selected left-button">People</a>
+    <a class="button-coin fw-bolder right-button" asp-area="" asp-controller="Coin" asp-action="CoinGroup">Group</a>
+</div>
+
+@if (Model != null){   
+    <div class="row-coin-card-people">
+        @foreach (var item in Model){
+            <div class="col-coin-card-people " data-id="@item.Id" data-name="@item.FullName" onclick="changeColCoinPeopleAttr(this)">
+                <div class="coin-container">
+                    <h6>@item.Bootcoin</h6>
+                </div>
+                <div class="card-body" style="text-align:center;">
+                    <div>
+                        <img src="../assets/bootcoin.png" alt="..." width="100" height="100">
+                    </div>
+                    <h6>@item.FullName</h6>
+                </div>
+            </div>
+        }
+
+        <div class="col-coin-card-people">
+            <div class="card-body" style="text-align:center;">
+                <div>
+                    <img src="../assets/bootcoin.png" alt="..." width="100" height="100">
+                </div>
+                <h6>Add New</h6>
+            </div>
+        </div>
+
+    </div>
+}
+else
+{
+    <p>No item found</p>
+}
+
+<div class="d-flex justify-content-center" style="margin-top: 10px;">
+    <input type="checkbox" id="multiple-people" name="multiple" value="multiple" onclick="multiplePeopleChange()">
+    <label for="multiple" style="margin-left: 10px;" id="multiple-text">Multiple select</label>
+</div>

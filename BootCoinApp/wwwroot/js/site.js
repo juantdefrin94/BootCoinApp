@@ -10,9 +10,11 @@ var addRewardText = document.getElementById("add-reward-text");
 var logoutText = document.getElementById("logout-text");
 var addCoinImage = document.getElementById("add-coin-img");
 var addRewardImage = document.getElementById("add-reward-img");
-var multiple = document.getElementById("multiple");
+var multiplePeople = document.getElementById("multiple-people");
+var multipleGroup = document.getElementById("multiple-group");
 
 var colCoinPeople = document.getElementsByClassName("col-coin-card-people");
+var colCoinGroup = document.getElementsByClassName("col-coin-card-group");
 
 var path = window.location.pathname;
 var page = path.split("/").pop();
@@ -20,11 +22,15 @@ var page = path.split("/").pop();
 var hoverMenu = 1;
 var currMenu = 2;
 
-var multipleSelected = false;
+var multiplePeopleSelected = false;
 const peopleSelected = [];
-const elementSelected = [];
+const elementPeopleSelected = [];
 
-if (page == "AddCoin") {
+var multipleGroupSelected = false;
+const groupSelected = [];
+const elementGroupSelected = [];
+
+if (page == "CoinPeople") {
     currMenu = 1;
     changeToDefault(addRewardButton);
 } else {
@@ -96,36 +102,28 @@ logoutButton.addEventListener("mouseleave", () => {
     logoutText.style.fontWeight = "400";
 })
 
-
-function multipleChange(){
-    if (!multipleSelected) {
-        multipleSelected = true;
-    } else {
-        multipleSelected = false;
-    }
-}
-
-function changeColCoinAttr(element) {
+//People
+function changeColCoinPeopleAttr(element) {
     let id = element.getAttribute("data-id");
     let len = peopleSelected.length;
     let isExist = false;
-    if (multipleSelected) {
+    if (multiplePeopleSelected) {
         for (let i = 0; i < len; i++) {
             if (peopleSelected[i] == id) {
                 isExist = true;
                 var index = peopleSelected.indexOf(id);
                 peopleSelected.splice(index, 1);
 
-                index = elementSelected.indexOf(element);
-                elementSelected.splice(index, 1);
+                index = elementPeopleSelected.indexOf(element);
+                elementPeopleSelected.splice(index, 1);
             }
         }
         if (!isExist) {
-            element.classList.add("selected-card-people");
+            element.classList.add("selected-card");
             peopleSelected.push(id);
-            elementSelected.push(element);
+            elementPeopleSelected.push(element);
         } else {
-            element.classList.remove("selected-card-people");
+            element.classList.remove("selected-card");
         }
 
     } else {
@@ -135,37 +133,97 @@ function changeColCoinAttr(element) {
                 var index = peopleSelected.indexOf(id);
                 peopleSelected.splice(index, 1);
 
-                index = elementSelected.indexOf(element);
-                elementSelected.splice(index, 1);
+                index = elementPeopleSelected.indexOf(element);
+                elementPeopleSelected.splice(index, 1);
 
-                element.classList.remove("selected-card-people");
+                element.classList.remove("selected-card");
             }
         } else {
-            element.classList.add("selected-card-people");
+            element.classList.add("selected-card");
             peopleSelected.push(id);
-            elementSelected.push(element);
+            elementPeopleSelected.push(element);
         }
     }
-    console.log(peopleSelected);
-    console.log(elementSelected);
 }
 
-function multipleChange() {
-    if (!multipleSelected) {
-        multipleSelected = true;
+function multiplePeopleChange() {
+    if (!multiplePeopleSelected) {
+        multiplePeopleSelected = true;
     } else {
         //sisakan 1 selected
         let len = peopleSelected.length;
         for (let i = len; i >= 2; i--) {
-                     
-            elementSelected[i - 1].classList.remove("selected-card-people");
 
-            elementSelected.pop();
+            elementPeopleSelected[i - 1].classList.remove("selected-card");
+
+            elementPeopleSelected.pop();
             peopleSelected.pop();
 
-            console.log(peopleSelected);
         }
 
-        multipleSelected = false;
+        multiplePeopleSelected = false;
+    }
+}
+
+//Group
+function changeColCoinGroupAttr(element) {
+    let id = element.getAttribute("data-id");
+    let len = groupSelected.length;
+    let isExist = false;
+    if (multipleGroupSelected) {
+        for (let i = 0; i < len; i++) {
+            if (groupSelected[i] == id) {
+                isExist = true;
+                var index = groupSelected.indexOf(id);
+                groupSelected.splice(index, 1);
+
+                index = elementGroupSelected.indexOf(element);
+                elementGroupSelected.splice(index, 1);
+            }
+        }
+        if (!isExist) {
+            element.classList.add("selected-card");
+            groupSelected.push(id);
+            elementGroupSelected.push(element);
+        } else {
+            element.classList.remove("selected-card");
+        }
+
+    } else {
+        if (len == 1) {
+            if (groupSelected[0] == id) {
+
+                var index = groupSelected.indexOf(id);
+                groupSelected.splice(index, 1);
+
+                index = elementGroupSelected.indexOf(element);
+                elementGroupSelected.splice(index, 1);
+
+                element.classList.remove("selected-card");
+            }
+        } else {
+            element.classList.add("selected-card");
+            groupSelected.push(id);
+            elementGroupSelected.push(element);
+        }
+    }
+}
+
+function multipleGroupChange() {
+    if (!multipleGroupSelected) {
+        multipleGroupSelected = true;
+    } else {
+        //sisakan 1 selected
+        let len = groupSelected.length;
+        for (let i = len; i >= 2; i--) {
+                     
+            elementGroupSelected[i - 1].classList.remove("selected-card");
+
+            elementGroupSelected.pop();
+            groupSelected.pop();
+
+        }
+
+        multipleGroupSelected = false;
     }
 }

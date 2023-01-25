@@ -166,17 +166,12 @@ a:hover {
     padding: 10px 30px;
 }
 
-
-.row{
-    /*margin: 0 3%;*/
-}
-
 .card{
     margin: 1% 0.5%;
     padding: 1%;
 }
 
-.row-coin-card {
+.row-coin-card-people {
     max-height: 47%;
     min-height: 23%;
     display: flex;
@@ -198,13 +193,43 @@ a:hover {
     background-color: white;
     border-radius: 20px;
     margin: 20px 30px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
 }
 
 .col-coin-card-people:hover{
     cursor: pointer;
 }
 
-.selected-card-people {
+.row-coin-card-group {
+    max-height: 40%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    overflow: auto;
+}
+
+.col-coin-card-group {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    min-width: 360px;
+    min-height: 320px;
+    max-width: 380px;
+    max-height: 340px;
+    background-color: white;
+    border-radius: 20px;
+    margin: 20px 30px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+    /*text-shadow: 0px 1px, 1px 0px, 1px 1px;*/
+}
+
+.col-coin-card-group:hover {
+    cursor: pointer;
+}
+
+.selected-card {
     border: 2px solid #AD1A25;
 }
 

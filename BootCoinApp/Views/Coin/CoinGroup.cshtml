@@ -1,4 +1,4 @@
-﻿@model IEnumerable<User>
+﻿@model IEnumerable<GroupUser>
 @{
     ViewData["Title"] = "Add Coin";
 }
@@ -18,28 +18,27 @@
 </div>
 
 <div class="d-flex justify-content-center">
-    <a class="button-coin fw-bolder selected left-button">People</a>
-    <a class="button-coin fw-bolder right-button">Group</a>
+    <a class="button-coin fw-bolder left-button" asp-area="" asp-controller="Coin" asp-action="CoinPeople">People</a>
+    <a class="button-coin fw-bolder selected right-button">Group</a>
 </div>
 
-@if (Model != null){   
-    <div class="row-coin-card">
-        @foreach (var item in Model){
-            <div class="col-coin-card-people " data-id="@item.Id" data-name="@item.FullName" onclick="changeColCoinAttr(this)">
+@if (Model != null)
+{
+    <div class="row-coin-card-group">
+        @foreach (var item in Model)
+        {
+            <div class="col-coin-card-group" data-id="@item.Id" data-name="@item.GroupName" onclick="changeColCoinGroupAttr(this)">
                 <div class="coin-container">
                     <h6>@item.Bootcoin</h6>
                 </div>
-                <div class="card-body" style="text-align:center;">
-                    <div>
-                        <img src="../assets/bootcoin.png" alt="..." width="100" height="100">
-                    </div>
-                    <h6>@item.FullName</h6>
+                <div class="card-body d-flex align-items-center justify-content-center">
+                    <h1>@item.GroupName</h1>
                 </div>
             </div>
         }
 
-        <div class="col-coin-card-people">
-            <div class="card-body" style="text-align:center;">
+        <div class="col-coin-card-group">
+            <div class="card-body d-flex align-items-center justify-content-center" style="text-align:center; flex-direction: column;">
                 <div>
                     <img src="../assets/bootcoin.png" alt="..." width="100" height="100">
                 </div>
@@ -55,6 +54,6 @@ else
 }
 
 <div class="d-flex justify-content-center" style="margin-top: 10px;">
-    <input type="checkbox" id="multiple" name="multiple" value="multiple" onclick="multipleChange()">
+    <input type="checkbox" id="multiple-group" name="multiple" value="multiple" onclick="multipleGroupChange()">
     <label for="multiple" style="margin-left: 10px;" id="multiple-text">Multiple select</label>
 </div>

@@ -11,11 +11,18 @@ namespace BootCoinApp.Controllers
         {
             _context = context;
         }
-        public IActionResult AddCoin()
+        public IActionResult CoinPeople()
         {
             List<User> users = _context.Users.ToList();
 
             return View(users);
+        }
+
+        public IActionResult CoinGroup()
+        {
+            List<GroupUser> groups = _context.GroupUsers.ToList();
+
+            return View(groups);
         }
     }
 }
