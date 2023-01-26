@@ -23,6 +23,7 @@ var title = document.getElementsByClassName("title");
 var themeContainerChange = document.getElementsByClassName("theme-container-change");
 var themeTextChange = document.getElementsByClassName("theme-text-change");
 var themeBackgroundChange = document.getElementsByClassName("theme-background-change");
+var colRewardCard = document.getElementsByClassName("col-reward-card");
 
 var switchTheme = document.getElementById("switch-theme");
 
@@ -279,6 +280,8 @@ function changeTheme() {
         for (let i = 0; i < len; i++) {
             themeBackgroundChange[i].classList.add("dark-mode-3");
         }
+
+        colCoinGroup.style.backgroundColor = "#121212";
     } else {
 
         localStorage.setItem("isDark", false);
@@ -306,6 +309,8 @@ function changeTheme() {
         for (let i = 0; i < len; i++) {
             themeBackgroundChange[i].classList.remove("dark-mode-3");
         }
+
+        colCoinGroup.style.backgroundColor = "white";
     }
 }
 

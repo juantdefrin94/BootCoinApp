@@ -3,44 +3,59 @@
     ViewData["Title"] = "Add Reward";
 }
 
-<div class="top row justify-content-between align-items-center top-container">
+<div class="top row justify-content-between align-items-center top-container theme-container-change">
     <div class="col-md-6">
         <form class="" asp-action="Index" asp-controller="CategoryReward">
-            <input type="text" name="query" class="search-bar w-100" placeholder="Search" />
+            <input class="search-bar w-100" type="text" name="query" placeholder="Search" />
         </form>
     </div>
 
     <div class="col-md-6">
         <div class="d-flex justify-content-end center-vertical">
-            <a class="text-black margin-0" id="main-text">Admin</a>
+            <a class="margin-0 theme-text-change" id="main-text">Admin</a>
             <img class="ml-10" src="~/assets/bootcoin.png" width="30" height="30" />
         </div>
     </div>
 </div>
 
-<div class="title p-content">
+<div class="title p-content theme-container-change theme-text-change">
     <h3>@ViewData["Title"]</h3>
 </div>
 
-<div>  
+<div class="theme-background-change"">
     <img class="d-block" src="#" style="margin: auto; width: 85%;"/>
 </div>
 
-<div class="p-content">
-    <h5 class="fw-bolder">Reward Category</h5>
+<div class="p-content theme-background-change theme-text-change d-flex flex-row" style="padding: 10px 20px;">
+    <h5 class="fw-bolder" style="width: 50%; text-align: left;">Reward Category</h5>
+    <div class="add-category">
+        <a style="color: #D94963;">+ Add new category</a>
+    </div>
 </div>
 
-<div class="row" style="margin: 10px 20px;">
+<div class="row-reward-card theme-background-change">
     @foreach (var item in Model)
     {
-        <div class="card col" style="width: 19rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-                <h5 class="card-title">@item.Name</h5>
+        <div class="col-reward-card" style="text-align:center; border-radius: 22px;">
+            <div class="card-body theme-container-change" style="border-radius: 20px;">
+                <div>
+                    <img src="..." alt="..." class="reward-image">
+                </div>
+           
+                <h5 class="card-title theme-text-change">@item.Name</h5>
                 <p class="text-danger">@item.Rewards.Count Rewards</p>
-                <a asp-controller="Reward" asp-action="Index" asp-route-categoryId="@item.Id" asp-route-categoryName="@item.Name" class="btn btn-primary">Details</a>
+                <a asp-controller="Reward" asp-action="Index" asp-route-categoryId="@item.Id" asp-route-categoryName="@item.Name" class="btn btn-primary detail-button">Details</a>
             </div>
         </div>
+
+    <!--<div class="card col" style="width: 19rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">@item.Name</h5>
+                    <p class="text-danger">@item.Rewards.Count Rewards</p>
+                    <a asp-controller="Reward" asp-action="Index" asp-route-categoryId="@item.Id" asp-route-categoryName="@item.Name" class="btn btn-primary">Details</a>
+                </div>
+        </div>-->
     }
 </div>
 @*
