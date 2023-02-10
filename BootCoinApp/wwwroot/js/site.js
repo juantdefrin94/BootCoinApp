@@ -12,9 +12,11 @@ var addCoinImage = document.getElementById("add-coin-img");
 var addRewardImage = document.getElementById("add-reward-img");
 var multiplePeople = document.getElementById("multiple-people");
 var multipleGroup = document.getElementById("multiple-group");
+var multipleCoins = document.getElementById("multiple-coins");
 
 var colCoinPeople = document.getElementsByClassName("col-coin-card-people");
 var colCoinGroup = document.getElementsByClassName("col-coin-card-group");
+var colCoinCoins = document.getElementsByClassName("col-coin-card-coin");
 
 //switch theme
 var searchBar = document.getElementsByClassName("search-bar");
@@ -28,7 +30,7 @@ var colRewardCard = document.getElementsByClassName("col-reward-card");
 var switchTheme = document.getElementById("switch-theme");
 
 var path = window.location.pathname;
-var page = path.split("/").pop();
+var page = path.split("/").pop()
 
 var hoverMenu = 1;
 var currMenu = 2;
@@ -40,6 +42,10 @@ const elementPeopleSelected = [];
 var multipleGroupSelected = false;
 const groupSelected = [];
 const elementGroupSelected = [];
+
+var multipleCoinsSelected = false;
+const coinsSelected = [];
+const elementCoinsSelected = [];
 
 var isDark = false
 
@@ -125,7 +131,7 @@ logoutButton.addEventListener("mouseleave", () => {
     logoutText.style.fontWeight = "400";
 })
 
-//People
+//People <<
 function changeColCoinPeopleAttr(element) {
     let id = element.getAttribute("data-id");
     let len = peopleSelected.length;
@@ -145,6 +151,8 @@ function changeColCoinPeopleAttr(element) {
             element.classList.add("selected-card");
             peopleSelected.push(id);
             elementPeopleSelected.push(element);
+            let div_id = document.getElementById("hidden-div");
+            div_id.innerHTML = "<input name=\"temp\" type=\"hidden\" value='" + peopleSelected + "'></input>"
         } else {
             element.classList.remove("selected-card");
         }
@@ -251,6 +259,71 @@ function multipleGroupChange() {
     }
 }
 
+//Coins <<
+function changeColCoinPeopleAttr(element) {
+    let id = element.getAttribute("data-id");
+    let len = coinsSelected.length;
+    let isExist = false;
+    if (multipleCoinsSelected) {
+        for (let i = 0; i < len; i++) {
+            if (coinsSelected[i] == id) {
+                isExist = true;
+                var index = coinsSelected.indexOf(id);
+                coinsSelected.splice(index, 1);
+
+                index = elementCoinsSelected.indexOf(element);
+                elementCoinsSelected.splice(index, 1);
+            }
+        }
+        if (!isExist) {
+            element.classList.add("selected-card");
+            coinsSelected.push(id);
+            elementCoinsSelected.push(element);
+            let div_id = document.getElementById("hidden-div");
+            div_id.innerHTML = "<input name=\"coins\" type=\"hidden\" value='" + coinsSelected + "'></input>"
+        } else {
+            element.classList.remove("selected-card");
+        }
+
+    } else {
+        if (len == 1) {
+            if (coinsSelected[0] == id) {
+
+                var index = coinsSelected.indexOf(id);
+                coinsSelected.splice(index, 1);
+
+                index = elementCoinsSelected.indexOf(element);
+                elementCoinsSelected.splice(index, 1);
+                
+                element.classList.remove("selected-card");
+            }
+        } else {
+            element.classList.add("selected-card");
+            coinsSelected.push(id);
+            elementCoinsSelected.push(element);
+        }
+    }
+}
+
+function multiplePeopleChange() {
+    if (!multipleCoinsSelected) {
+        multipleCoinsSelected = true;
+    } else {
+        //sisakan 1 selected
+        let len = coinsSelected.length;
+        for (let i = len; i >= 2; i--) {
+
+            elementCoinsSelected[i - 1].classList.remove("selected-card");
+
+            elementCoinsSelected.pop();
+            coinsSelected.pop();
+
+        }
+
+        multipleCoinsSelected = false;
+    }
+}
+
 function changeTheme() {
     console.log("masuk change theme");
     if (!isDark) {
@@ -321,7 +394,7 @@ function changeThemeDefault() {
         /* changing search bar into dark mode */
 
         switchTheme.checked = true;
-
+        
         searchBar[0].classList.add("dark-mode-2");
 
         len = themeContainerChange.length;
