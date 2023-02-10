@@ -45,6 +45,7 @@ const elementGroupSelected = [];
 
 var multipleCoinsSelected = false;
 const coinsSelected = [];
+const reqCoinsSelected = [];
 const elementCoinsSelected = [];
 
 var isDark = false
@@ -59,7 +60,7 @@ if (localStorage.getItem("isDark") != null && localStorage.getItem("isDark") == 
 console.log("isDark = " + isDark + " after if");
 
 
-if (page == "CoinPeople" || page == "CoinGroup") {
+if (page == "CoinPeople" || page == "CoinGroup" || page == "CoinSelect" || page == "CoinSelectGroup") {
     currMenu = 1;
     changeToDefault(addRewardButton);
 } else {
@@ -173,6 +174,8 @@ function changeColCoinPeopleAttr(element) {
             element.classList.add("selected-card");
             peopleSelected.push(id);
             elementPeopleSelected.push(element);
+            let div_id = document.getElementById("hidden-div");
+            div_id.innerHTML = "<input name=\"temp\" type=\"hidden\" value='" + peopleSelected + "'></input>"
         }
     }
 }
@@ -216,6 +219,8 @@ function changeColCoinGroupAttr(element) {
             element.classList.add("selected-card");
             groupSelected.push(id);
             elementGroupSelected.push(element);
+            let div_id = document.getElementById("hidden-div-3");
+            div_id.innerHTML = "<input name=\"temp\" type=\"hidden\" value='" + groupSelected + "'></input>"
         } else {
             element.classList.remove("selected-card");
         }
@@ -236,6 +241,8 @@ function changeColCoinGroupAttr(element) {
             element.classList.add("selected-card");
             groupSelected.push(id);
             elementGroupSelected.push(element);
+            let div_id = document.getElementById("hidden-div-3");
+            div_id.innerHTML = "<input name=\"temp\" type=\"hidden\" value='" + groupSelected + "'></input>"
         }
     }
 }
@@ -260,8 +267,9 @@ function multipleGroupChange() {
 }
 
 //Coins <<
-function changeColCoinPeopleAttr(element) {
+function changeColCoinCoinsAttr(element) {
     let id = element.getAttribute("data-id");
+    let req = element.getAttribute("data-req");
     let len = coinsSelected.length;
     let isExist = false;
     if (multipleCoinsSelected) {
@@ -271,6 +279,9 @@ function changeColCoinPeopleAttr(element) {
                 var index = coinsSelected.indexOf(id);
                 coinsSelected.splice(index, 1);
 
+                index = reqCoinsSelected.indexOf(id);
+                reqCoinsSelected.splice(index, 1);
+
                 index = elementCoinsSelected.indexOf(element);
                 elementCoinsSelected.splice(index, 1);
             }
@@ -278,9 +289,10 @@ function changeColCoinPeopleAttr(element) {
         if (!isExist) {
             element.classList.add("selected-card");
             coinsSelected.push(id);
+            reqCoinsSelected.push(req);
             elementCoinsSelected.push(element);
-            let div_id = document.getElementById("hidden-div");
-            div_id.innerHTML = "<input name=\"coins\" type=\"hidden\" value='" + coinsSelected + "'></input>"
+            let div_id = document.getElementById("hidden-div-2");
+            div_id.innerHTML = "<input name=\"coins\" type=\"hidden\" value='" + reqCoinsSelected + "'></input>"
         } else {
             element.classList.remove("selected-card");
         }
@@ -292,6 +304,9 @@ function changeColCoinPeopleAttr(element) {
                 var index = coinsSelected.indexOf(id);
                 coinsSelected.splice(index, 1);
 
+                index = reqCoinsSelected.indexOf(id);
+                reqCoinsSelected.splice(index, 1);
+
                 index = elementCoinsSelected.indexOf(element);
                 elementCoinsSelected.splice(index, 1);
                 
@@ -300,12 +315,15 @@ function changeColCoinPeopleAttr(element) {
         } else {
             element.classList.add("selected-card");
             coinsSelected.push(id);
+            reqCoinsSelected.push(req);
             elementCoinsSelected.push(element);
+            let div_id = document.getElementById("hidden-div-2");
+            div_id.innerHTML = "<input name=\"coins\" type=\"hidden\" value='" + reqCoinsSelected + "'></input>"
         }
     }
 }
 
-function multiplePeopleChange() {
+function multipleCoinsChange() {
     if (!multipleCoinsSelected) {
         multipleCoinsSelected = true;
     } else {
@@ -317,6 +335,7 @@ function multiplePeopleChange() {
 
             elementCoinsSelected.pop();
             coinsSelected.pop();
+            reqCoinsSelected.pop();
 
         }
 

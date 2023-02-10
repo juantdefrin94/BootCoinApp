@@ -33,18 +33,24 @@ namespace BootCoinApp.Controllers
             return View(coins);
         }
 
-        [HttpPost]
-        public IActionResult AddCoinToUser(string coins, string tempId)
+        public IActionResult CoinSelectGroup()
         {
-            var tempList = tempId.Split(",");
+            List<AddCoinCategory> coins = _context.AddCoinCategories.ToList();
+            return View(coins);
+        }
+
+        [HttpPost]
+        public IActionResult AddCoinToUser(string coins, string userList)
+        {
+            var tempList = userList.Split(",");
             var coinList = coins.Split(",");
             int tempCoins = 0;
-            List<User> users = null;
             List<User> usersAll = _context.Users.ToList();
             foreach (var item in coinList)
             {
                 tempCoins += int.Parse(item);
             }
+            var j = tempCoins;
             foreach (var item in tempList)
             {
                 foreach (var userTemp in usersAll)
@@ -59,14 +65,47 @@ namespace BootCoinApp.Controllers
                     }
                 }
             }
-            return RedirectToAction("CoinPeople");
+            return Redirect("CoinPeople");
+        }
+        [HttpPost]
+        public IActionResult AddCoinToGroup(string coins, string userList)
+        {
+            var tempList = userList.Split(",");
+            var coinList = coins.Split(",");
+            int tempCoins = 0;
+            List<GroupUser> usersAll = _context.GroupUsers.ToList();
+            foreach (var item in coinList)
+            {
+                tempCoins += int.Parse(item);
+            }
+            var j = tempCoins;
+            foreach (var item in tempList)
+            {
+                foreach (var groupTemp in usersAll)
+                {
+                    int x = int.Parse(item);
+                    if (groupTemp.Id == x)
+                    {
+                        var group = _context.GroupUsers.Where(u => u.Id == x).FirstOrDefault();
+                        group.Bootcoin += tempCoins;
+                        _context.Update(group);
+                        _context.SaveChanges();
+                    }
+                }
+            }
+            return Redirect("CoinGroup");
         }
         [HttpPost]
         public IActionResult PassingUser(string temp)
         {
-            //var tempList = temp.Split(",");
-            ViewData["tempList"] = temp;
+            TempData["tempList"] = temp;
             return Redirect("CoinSelect");
+        }
+        [HttpPost]
+        public IActionResult PassingGroup(string temp)
+        {
+            TempData["tempList"] = temp;
+            return Redirect("CoinSelectGroup");
         }
     }
 }

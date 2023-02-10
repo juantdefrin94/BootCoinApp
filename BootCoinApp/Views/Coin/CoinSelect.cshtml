@@ -19,10 +19,10 @@
 
 @if (Model != null)
 {
-    <div class="row-coin-card-people theme-background-change">
+    <div class="row-coin-card-coin theme-background-change">
         @foreach (var item in Model)
         {
-            <div class="col-coin-card-coin theme-container-change" data-id="@item.Id" data-name="@item.AddCoinCategoryName" onclick="changeColCoinPeopleAttr(this)">
+            <div class="col-coin-card-coin theme-container-change" data-req="@item.RequiredCoin" data-id="@item.Id" data-name="@item.AddCoinCategoryName" onclick="changeColCoinCoinsAttr(this)">
                 <div class="coin-container">
                     <h6>@item.RequiredCoin</h6>
                 </div>
@@ -43,7 +43,6 @@
                 <h6 class="theme-text-change">Add New</h6>
             </div>
         </div>
-
     </div>
 }
 else
@@ -51,13 +50,16 @@ else
     <p>No item found</p>
 }
 
-<form method="post" asp-controller="Coin" asp-action="AddCoinToUser">
-    <div id="hidden-div" style="display:none">
-    </div>
-    <button type="submit" class="btn btn-primary" asp-route-tempId="@ViewData["tempList"]">Input</button>
-</form>
-
 <div class="d-flex justify-content-center theme-background-change" style="padding-top: 10px;">
-    <input type="checkbox" id="multiple-coins" name="multiple" value="multiple" onclick="multiplePeopleChange()">
+    <input type="checkbox" id="multiple-coins" name="multiple" value="multiple" onclick="multipleCoinsChange()">
     <label for="multiple" style="margin-left: 10px;" id="multiple-text">Multiple select</label>
+</div>
+
+<div class="d-flex justify-content-center pt-5">
+    <form method="post" asp-controller="Coin" asp-action="AddCoinToUser">
+        <div id="hidden-div-2" style="display:none">
+        </div>
+        <input name="userList" type="hidden" value="@TempData["tempList"]" style="display:none"></input>
+        <button type="submit" class="btn btn-danger align-content-center ps-4 pe-4" style="border-radius:12px; background-color:#AD1A25; font-size: 24px">Input</button>
+    </form>
 </div>
