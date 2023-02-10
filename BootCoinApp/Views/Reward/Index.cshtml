@@ -20,10 +20,6 @@
     <h3>@ViewData["Title"]</h3>
 </div>
 
-<div>
-    <img class="d-block" src="#" style="margin: auto; width: 85%;" />
-</div>
-
 <div class="p-content">
     <h5 class="fw-bolder">Reward Details - @ViewData["categoryName"]</h5>
 </div>
@@ -34,7 +30,8 @@
         @foreach (var item in Model)
         {
             <div class="card col" style="width: 19rem;">
-                <img src="~/images/rewards/@item.Photo" class="card-img-top" alt="..." height="100" width="60">
+                @*Photo Reward disini kalo blom ada karena gaada filenya*@
+                <img src="~/images/rewards/@item.Photo" class="card-img-top" alt="@item.Photo" height="300" width="100">
                 <div class="card-body">
                     <h5 class="card-title">@item.RewardName</h5>
                 </div>
