@@ -21,15 +21,11 @@
     <h3>@ViewData["Title"]</h3>
 </div>
 
-<div>
-    <img class="d-block" src="#" style="margin: auto; width: 85%;" />
+<div class="ps-5 pt-5 pb-3">
+    <h5 class="fw-bolder">Create Reward - @ViewData["categoryName"] </h5>
 </div>
 
-<div class="p-content">
-    <h5 class="fw-bolder">Reward Details - @ViewData["categoryName"] </h5>
-</div>
-
-<div class="p-content">
+<div class="ps-5 pe-5">
     <form method="post" asp-controller="Reward" asp-action="Create" enctype="multipart/form-data">
         <input type="hidden" asp-for="CategoryId" value="@ViewData["categoryID"]"/>
         <div class="mb-2">

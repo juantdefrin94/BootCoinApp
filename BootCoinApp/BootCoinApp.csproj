@@ -7,26 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Views\assets\add-coin-black.png" />
-    <None Remove="Views\assets\add-coin-white.png" />
-    <None Remove="Views\assets\add-reward-black.png" />
-    <None Remove="Views\assets\add-reward-white.png" />
-    <None Remove="Views\assets\bootcoin-banner.png" />
-    <None Remove="Views\assets\bootcoin.png" />
-    <None Remove="Views\assets\logout.png" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Include="Views\assets\add-coin-black.png" />
-    <Content Include="Views\assets\add-coin-white.png" />
-    <Content Include="Views\assets\add-reward-black.png" />
-    <Content Include="Views\assets\add-reward-white.png" />
-    <Content Include="Views\assets\bootcoin-banner.png" />
-    <Content Include="Views\assets\bootcoin.png" />
-    <Content Include="Views\assets\logout.png" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="CsvHelper" Version="30.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="7.0.2" />
