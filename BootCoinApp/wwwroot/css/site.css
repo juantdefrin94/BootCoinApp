@@ -265,6 +265,35 @@ a:hover {
     cursor: pointer;
 }
 
+.row-coin-card-coin {
+    max-height: 47%;
+    min-height: 23%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    overflow: auto;
+}
+
+.col-coin-card-coin {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    min-width: 220px;
+    min-height: 180px;
+    max-width: 240px;
+    max-height: 200px;
+    background-color: white;
+    border-radius: 20px;
+    margin: 20px 30px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+}
+
+.col-coin-card-coin:hover {
+    cursor: pointer;
+}
+
 .row-coin-card-group {
     max-height: 40%;
     display: flex;

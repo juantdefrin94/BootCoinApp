@@ -1,4 +1,4 @@
-﻿@model IEnumerable<User>
+﻿@model IEnumerable<AddCoinCategory>
 @{
     ViewData["Title"] = "Add Coin";
 }
@@ -17,28 +17,25 @@
     <h3>@ViewData["Title"]</h3>
 </div>
 
-<div class="d-flex justify-content-center theme-background-change">
-    <a class="button-coin fw-bolder selected left-button">People</a>
-    <a class="button-coin fw-bolder right-button" asp-area="" asp-controller="Coin" asp-action="CoinGroup">Group</a>
-</div>
-
-@if (Model != null){
-    <div class="row-coin-card-people theme-background-change">
-        @foreach (var item in Model){
-            <div class="col-coin-card-people theme-container-change" data-id="@item.Id" data-name="@item.FullName" onclick="changeColCoinPeopleAttr(this)">
+@if (Model != null)
+{
+    <div class="row-coin-card-coin theme-background-change">
+        @foreach (var item in Model)
+        {
+            <div class="col-coin-card-coin theme-container-change" data-req="@item.RequiredCoin" data-id="@item.Id" data-name="@item.AddCoinCategoryName" onclick="changeColCoinCoinsAttr(this)">
                 <div class="coin-container">
-                    <h6>@item.Bootcoin</h6>
+                    <h6>@item.RequiredCoin</h6>
                 </div>
                 <div class="card-body" style="text-align:center;">
                     <div>
                         <img src="../assets/bootcoin.png" alt="..." width="100" height="100">
                     </div>
-                    <h6 class="theme-text-change">@item.FullName</h6>
+                    <h6 class="theme-text-change">@item.AddCoinCategoryName</h6>
                 </div>
             </div>
         }
 
-        <div class="col-coin-card-people theme-container-change">
+        <div class="col-coin-card-coin theme-container-change">
             <div class="card-body" style="text-align:center;">
                 <div>
                     <img src="../assets/bootcoin.png" alt="..." width="100" height="100">
@@ -46,7 +43,6 @@
                 <h6 class="theme-text-change">Add New</h6>
             </div>
         </div>
-
     </div>
 }
 else
@@ -55,14 +51,15 @@ else
 }
 
 <div class="d-flex justify-content-center theme-background-change" style="padding-top: 10px;">
-    <input type="checkbox" id="multiple-people" name="multiple" value="multiple" onclick="multiplePeopleChange()">
+    <input type="checkbox" id="multiple-coins" name="multiple" value="multiple" onclick="multipleCoinsChange()">
     <label for="multiple" style="margin-left: 10px;" id="multiple-text">Multiple select</label>
 </div>
 
 <div class="d-flex justify-content-center pt-5">
-    <form method="post" asp-controller="Coin" asp-action="PassingUser">
-        <div id="hidden-div" style="display:none">
+    <form method="post" asp-controller="Coin" asp-action="AddCoinToGroup">
+        <div id="hidden-div-2" style="display:none">
         </div>
+        <input name="userList" type="hidden" value="@TempData["tempList"]" style="display:none"></input>
         <button type="submit" class="btn btn-danger align-content-center ps-4 pe-4" style="border-radius:12px; background-color:#AD1A25; font-size: 24px">Input</button>
     </form>
 </div>
