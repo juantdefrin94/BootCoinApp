@@ -46,6 +46,12 @@ namespace BootCoinApp.Controllers
             return View(coins);
         }
 
+        public IActionResult AddCoinCategory()
+        {
+            List<AddCoinCategory> coins = _context.AddCoinCategories.ToList();
+            return View(coins);
+        }
+
         [HttpPost]
         public IActionResult AddCoinToUser(string coins, string userList)
         {

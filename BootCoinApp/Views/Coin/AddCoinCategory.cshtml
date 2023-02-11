@@ -1,0 +1,33 @@
+﻿@model IEnumerable<AddCoinCategory>
+@{
+    ViewData["Title"] = "Add Coin";
+}
+
+<div class="top d-flex top-container theme-container-change">
+    <form class="w-100" asp-action="CoinGroup" asp-controller="Coin">
+        <input type="text" name="query" class="search-bar w-100" placeholder="Search" />
+    </form>
+
+    <div class="d-inline-flex center-vertical profile">
+        <div class="d-flex center-vertical">
+            <a class="margin-0 theme-text-change" id="main-text">Admin</a>
+        </div>
+        <img class="ml-10" src="../assets/bootcoin.png" width="30" height="30" />
+    </div>
+</div>
+
+<div class="title theme-text-change theme-container-change">
+    <h3>@ViewData["Title"]</h3>
+</div>
+
+<div style="height: 100%; flex-direction: column;" class="d-flex justify-content-center align-items-center theme-text-change">
+    <div style="width: auto;">
+        <h2>Add New Coin Category</h2>
+        <form>
+            <div>
+                <label>Coin Category Name:</label>
+                <input style="width: 100%;" class="form-control theme-container-change"/>
+            </div>
+        </form>
+    </div>
+</div>
