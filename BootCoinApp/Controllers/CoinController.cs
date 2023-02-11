@@ -2,6 +2,7 @@
 using BootCoinApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
 using System.Linq;
 
 namespace BootCoinApp.Controllers
@@ -13,17 +14,23 @@ namespace BootCoinApp.Controllers
         {
             _context = context;
         }
-        public IActionResult CoinPeople()
+        public IActionResult CoinPeople(string query="")
         {
-            List<User> users = _context.Users.ToList();
-
+            IEnumerable<User> users = _context.Users.ToList();
+            if (!string.IsNullOrEmpty(query))
+            {
+                users = users.Where(u => u.FullName.ToLower().Contains(query.ToLower()));
+            }
             return View(users);
         }
 
-        public IActionResult CoinGroup()
+        public IActionResult CoinGroup(string query="")
         {
-            List<GroupUser> groups = _context.GroupUsers.ToList();
-
+            IEnumerable<GroupUser> groups = _context.GroupUsers.ToList();
+            if (!string.IsNullOrEmpty(query))
+            {
+                groups = groups.Where(g => g.GroupName.ToLower().Contains(query.ToLower()));
+            }
             return View(groups);
         }
 
