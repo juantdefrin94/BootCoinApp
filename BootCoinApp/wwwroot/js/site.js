@@ -25,6 +25,9 @@ var title = document.getElementsByClassName("title");
 var themeContainerChange = document.getElementsByClassName("theme-container-change");
 var themeTextChange = document.getElementsByClassName("theme-text-change");
 var themeBackgroundChange = document.getElementsByClassName("theme-background-change");
+var themeInputChange = document.getElementsByClassName("theme-input-change");
+var inputDisable = document.getElementsByClassName("input-dis");
+var formControl = document.getElementsByClassName("form-control")
 var colRewardCard = document.getElementsByClassName("col-reward-card");
 
 var switchTheme = document.getElementById("switch-theme");
@@ -152,14 +155,11 @@ function changeColCoinPeopleAttr(element) {
             element.classList.add("selected-card");
             peopleSelected.push(id);
             elementPeopleSelected.push(element);
-            let div_id = document.getElementById("hidden-div");
-            div_id.innerHTML = "<input name=\"temp\" type=\"hidden\" value='" + peopleSelected + "'></input>"
         } else {
             element.classList.remove("selected-card");
         }
-
-    } else {
-        if (len == 1) {
+    } else { //jika tidak multiple select
+        if (len == 1) { 
             if (peopleSelected[0] == id) {
 
                 var index = peopleSelected.indexOf(id);
@@ -169,15 +169,24 @@ function changeColCoinPeopleAttr(element) {
                 elementPeopleSelected.splice(index, 1);
 
                 element.classList.remove("selected-card");
+            } else {
+                peopleSelected.pop();
+                elementPeopleSelected[0].classList.remove("selected-card");
+                elementPeopleSelected.pop();
+                element.classList.add("selected-card");
+                peopleSelected.push(id);
+                elementPeopleSelected.push(element);
             }
         } else {
             element.classList.add("selected-card");
             peopleSelected.push(id);
             elementPeopleSelected.push(element);
-            let div_id = document.getElementById("hidden-div");
-            div_id.innerHTML = "<input name=\"temp\" type=\"hidden\" value='" + peopleSelected + "'></input>"
         }
     }
+
+    let div_id = document.getElementById("hidden-div");
+    div_id.innerHTML = "<input name=\"temp\" type=\"hidden\" value='" + peopleSelected + "'></input>"
+
 }
 
 function multiplePeopleChange() {
@@ -219,8 +228,6 @@ function changeColCoinGroupAttr(element) {
             element.classList.add("selected-card");
             groupSelected.push(id);
             elementGroupSelected.push(element);
-            let div_id = document.getElementById("hidden-div-3");
-            div_id.innerHTML = "<input name=\"temp\" type=\"hidden\" value='" + groupSelected + "'></input>"
         } else {
             element.classList.remove("selected-card");
         }
@@ -236,15 +243,22 @@ function changeColCoinGroupAttr(element) {
                 elementGroupSelected.splice(index, 1);
 
                 element.classList.remove("selected-card");
+            } else {
+                groupSelected.pop();
+                elementGroupSelected[0].classList.remove("selected-card");
+                elementGroupSelected.pop();
+                element.classList.add("selected-card");
+                groupSelected.push(id);
+                elementGroupSelected.push(element)
             }
         } else {
             element.classList.add("selected-card");
             groupSelected.push(id);
             elementGroupSelected.push(element);
-            let div_id = document.getElementById("hidden-div-3");
-            div_id.innerHTML = "<input name=\"temp\" type=\"hidden\" value='" + groupSelected + "'></input>"
         }
     }
+    let div_id = document.getElementById("hidden-div-3");
+    div_id.innerHTML = "<input name=\"temp\" type=\"hidden\" value='" + groupSelected + "'></input>"
 }
 
 function multipleGroupChange() {
@@ -309,8 +323,15 @@ function changeColCoinCoinsAttr(element) {
 
                 index = elementCoinsSelected.indexOf(element);
                 elementCoinsSelected.splice(index, 1);
-                
+
                 element.classList.remove("selected-card");
+            } else {
+                coinsSelected.pop();
+                elementCoinsSelected[0].classList.remove("selected-card");
+                elementCoinsSelected.pop();
+                element.classList.add("selected-card");
+                coinsSelected.push(id);
+                elementCoinsSelected.push(element)
             }
         } else {
             element.classList.add("selected-card");
@@ -343,6 +364,11 @@ function multipleCoinsChange() {
     }
 }
 
+function changeFocusTheme(i, newBackground, newColor) {
+    themeInputChange[i].style.backgroundColor = newBackground;
+    themeInputChange[i].style.color = newColor;
+}
+
 function changeTheme() {
     console.log("masuk change theme");
     if (!isDark) {
@@ -355,8 +381,23 @@ function changeTheme() {
 
         //change theme to dark
         /* changing search bar into dark mode */
-
+        if (inputDisable.length != 0) {
+            inputDisable[0].classList.add("disable-input");
+            inputDisable[0].style.userSelect = "none";
+        }
+  
         searchBar[0].classList.add("dark-mode-2");
+
+        len = themeInputChange.length;
+        for (let i = 0; i < len; i++) {
+            themeInputChange[i].classList.add("dark-mode-1")
+            themeInputChange[i].addEventListener("onfocus", changeFocusTheme(i, "#2F2F2F", "white"))
+        }
+
+        len = formControl.length;
+        for (let i = 0; i < len; i++) {
+            formControl[i].style.color = "white";
+        }
 
         len = themeContainerChange.length;
         for (let i = 0; i < len; i++) {
@@ -373,7 +414,10 @@ function changeTheme() {
             themeBackgroundChange[i].classList.add("dark-mode-3");
         }
 
-        colCoinGroup.style.backgroundColor = "#121212";
+        len = colCoinGroup.length;
+        for (let i = 0; i < len; i++) {
+            colCoinGroup[i].style.backgroundColor = "#121212";
+        }
     } else {
 
         localStorage.setItem("isDark", false);
@@ -382,10 +426,27 @@ function changeTheme() {
         console.log("masuk light");
         let len = 0;
 
+        if (inputDisable.length != 0) {
+            inputDisable[0].classList.remove("disable-input")
+            inputDisable[0].style.userSelect = "none";
+        }
+        
+
         //change theme to light
         /* changing search bar into light mode */
 
         searchBar[0].classList.remove("dark-mode-2");
+
+        len = themeInputChange.length;
+        for (let i = 0; i < len; i++) {
+            themeInputChange[i].classList.remove("dark-mode-1")
+            themeInputChange[i].addEventListener("onfocus", changeFocusTheme(i, "white", "black"))
+        }
+
+        len = formControl.length;
+        for (let i = 0; i < len; i++) {
+            formControl[i].style.color = "black";
+        }
 
         len = themeContainerChange.length;
         for (let i = 0; i < len; i++) {
@@ -402,19 +463,38 @@ function changeTheme() {
             themeBackgroundChange[i].classList.remove("dark-mode-3");
         }
 
-        colCoinGroup.style.backgroundColor = "white";
+        len = colCoinGroup.length;
+        for (let i = 0; i < len; i++) {
+            colCoinGroup[i].style.backgroundColor = "white";
+        }
     }
 }
 
 function changeThemeDefault() {
     console.log("masuk change theme default");
     if (isDark) {
+        if (inputDisable.length != 0) {
+            inputDisable[0].classList.add("disable-input");
+            inputDisable[0].style.userSelect = "none";
+        }
+
         //change theme to dark
         /* changing search bar into dark mode */
 
         switchTheme.checked = true;
         
         searchBar[0].classList.add("dark-mode-2");
+
+        len = themeInputChange.length;
+        for (let i = 0; i < len; i++) {
+            themeInputChange[i].classList.add("dark-mode-1")
+            themeInputChange[i].addEventListener("onfocus", changeFocusTheme(i, "#2F2F2F", "white"))
+        }
+
+        len = formControl.length;
+        for (let i = 0; i < len; i++) {
+            formControl[i].style.color = "white";
+        }
 
         len = themeContainerChange.length;
         for (let i = 0; i < len; i++) {

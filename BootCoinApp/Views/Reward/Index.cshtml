@@ -3,37 +3,39 @@
     ViewData["Title"] = "Detail Reward";
 }
 
-<div class="top d-flex top-container">
+<div class="top d-flex top-container theme-container-change">
     <form class="w-100" asp-action="Index" asp-controller="Reward" asp-route-categoryId="@ViewData["categoryID"]" asp-route-categoryName="@ViewData["categoryName"]">
         <input type="text" name="query" class="search-bar w-100" placeholder="Search" />
     </form>
 
     <div class="col-md-6">
         <div class="d-flex justify-content-end center-vertical">
-            <a class="text-black margin-0" id="main-text">Admin</a>
+            <a class="margin-0 theme-text-change" id="main-text">Admin</a>
             <img class="ml-10" src="~/assets/bootcoin.png" width="30" height="30" />
         </div>
     </div>
 </div>
 
-<div class="title p-content">
+<div class="title p-content theme-container-change theme-text-change">
     <h3>@ViewData["Title"]</h3>
 </div>
 
-<div class="p-content">
-    <h5 class="fw-bolder">Reward Details - @ViewData["categoryName"]</h5>
+<div class="p-content title theme-text-change theme-background-change">
+    <h5 class="fw-bolder theme-text-change">Reward Details - @ViewData["categoryName"]</h5>
 </div>
 
 @if (Model != null)
 {
-    <div class="row" style="margin: 10px 20px;">
+    <div class="row-reward-card" style="margin: 10px 20px;">
         @foreach (var item in Model)
         {
-            <div class="card col" style="width: 19rem; max-height:60vh;">
+            <div class="col-reward-card theme-container-change" style="width: 19rem; max-height:60vh;">
                 @*Photo Reward disini kalo blom ada karena gaada filenya*@
-                <img src="~/images/rewards/@item.Photo" class="card-img-top" alt="@item.Photo" height="300" width="100">
+                <div style="margin-top: 20px;">
+                    <img src="~/images/rewards/@item.Photo" class="reward-image" alt="@item.Photo" height="300" width="250">
+                </div>
                 <div class="card-body">
-                    <h5 class="card-title">@item.RewardName</h5>
+                    <h5 class="card-title theme-text-change">@item.RewardName</h5>
                 </div>
                 <p class="text-danger">@item.RequiredCoin Bootcoin</p>
             </div>

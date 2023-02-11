@@ -1,8 +1,8 @@
 ﻿@model Reward
 @{
-    ViewData["Title"] = "Create Reward";
+    ViewData["Title"] = "Add New Reward";
 }
-<div class="top row justify-content-between align-items-center top-container">
+<div class="top row justify-content-between align-items-center top-container theme-container-change">
     <div class="col-md-6">
         <form class="" asp-action="Index" asp-controller="Reward" asp-route-categoryId="@ViewData["categoryID"]" asp-route-categoryName="@ViewData["categoryName"]">
             <input type="text" name="query" class="search-bar w-100" placeholder="Search" />
@@ -11,53 +11,53 @@
 
     <div class="col-md-6">
         <div class="d-flex justify-content-end center-vertical">
-            <a class="text-black margin-0" id="main-text">Admin</a>
+            <a class="margin-0 theme-text-change" id="main-text">Admin</a>
             <img class="ml-10" src="~/assets/bootcoin.png" width="30" height="30" />
         </div>
     </div>
 </div>
 
-<div class="title p-content">
+<div class="title p-content theme-text-change theme-container-change">
     <h3>@ViewData["Title"]</h3>
 </div>
 
-<div class="ps-5 pt-5 pb-3">
-    <h5 class="fw-bolder">Create Reward - @ViewData["categoryName"] </h5>
+<div class="ps-5 pt-5 pb-3 theme-text-change theme-background-change">
+    <h5 class="fw-bolder">Add Reward </h5>
 </div>
 
 <div class="ps-5 pe-5">
     <form method="post" asp-controller="Reward" asp-action="Create" enctype="multipart/form-data">
         <input type="hidden" asp-for="CategoryId" value="@ViewData["categoryID"]"/>
         <div class="mb-2">
-            <label for="category_name">Category Reward</label>
-            <input for="category_name" class="form-control" placeholder="@ViewData["categoryName"]" readonly>
+            <label class="form-label theme-text-change" for="category_name">Category Reward:</label>
+            <input for="category_name" class="form-control input-dis" value="@ViewData["categoryName"]" disabled="disabled" >
         </div>
         <div class="mb-2">
-            <label asp-for="RewardName" class="form-label">Reward Name</label>
-            <input asp-for="RewardName" class="form-control" placeholder="Reward Name">
+            <label asp-for="RewardName" class="form-label theme-text-change">Reward Name:</label>
+            <input asp-for="RewardName" class="form-control theme-input-change" placeholder="Reward Name">
             <span asp-validation-for="RewardName" class="text-danger"></span>
         </div>
         <div class="mb-2">
-            <label asp-for="RewardDescription" class="form-label">Reward Description</label>
-            <input asp-for="RewardDescription" class="form-control" placeholder="Reward Description">
+            <label asp-for="RewardDescription" class="form-label theme-text-change">Reward Description:</label>
+            <input asp-for="RewardDescription" class="form-control theme-input-change" placeholder="Reward Description">
             <span asp-validation-for="RewardDescription" class="text-danger"></span>
         </div>
         <div class="mb-2">
-            <label asp-for="RequiredCoin" class="form-label">Required Coin</label>
-            <div class="input-group">
+            <label asp-for="RequiredCoin" class="form-label theme-text-change">Required Coins:</label>
+            <div class="input-group"> 
                 <div class="input-group-prepend">
-                    <button type="button" class="btn btn-outline-secondary" id="decrement">-</button>
+                    <button type="button" class="btn btn-outline-secondary theme-container-change count-button" id="decrement">-</button>
                 </div>
-                <input asp-for="RequiredCoin" type="number" class="form-control" id="quantity" value="1" min="1">
+                <input style="border-radius: 10px; width: 100px;" asp-for="RequiredCoin" type="number" class="form-control theme-input-change" id="quantity" value="1" min="1">
                 <div class="input-group-append">
-                    <button type="button" class="btn btn-outline-secondary" id="increment">+</button>
+                    <button type="button" class="btn btn-outline-secondary theme-container-change count-button" id="increment">+</button>
                 </div>
             </div>
             <span asp-validation-for="RequiredCoin" class="text-danger"></span>
         </div>
         <div class="mb-2">
-            <label asp-for="Photo"></label>
-            <input type="file" asp-for="Photo" class="form-control" />
+            <label class="theme-text-change" asp-for="Photo">Add hoto:</label>
+            <input type="file" asp-for="Photo" class="form-control theme-container-change" />
             <span asp-validation-for="Photo" class="text-danger"></span>
         </div>
         <a class="btn btn-secondary" asp-action="Index" asp-controller="Reward" asp-route-categoryId="@ViewData["categoryID"]" asp-route-categoryName="@ViewData["categoryName"]">Back</a>

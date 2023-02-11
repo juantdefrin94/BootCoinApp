@@ -323,6 +323,36 @@ a:hover {
     cursor: pointer;
 }
 
+.row-reward-card {
+
+    max-height: 46%;
+    min-height: 32%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    overflow: auto;
+}
+
+.col-reward-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    min-width: 340px;
+    min-height: 380px;
+    max-width: 380px;
+    max-height: 420px;
+    background-color: white;
+    border-radius: 20px;
+    margin: 20px 30px;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+}
+
+.col-reward-card:hover {
+    cursor: pointer;
+}
+
 .selected-card {
     border: 2px solid #AD1A25;
 }
@@ -359,29 +389,6 @@ a:hover {
     color: white;
 }
 
-.row-reward-card {
-    max-height: 48%;
-    min-height: 35%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    overflow: auto;
-}
-
-.col-reward-card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    min-width: 160px;
-    min-height: 220px;
-    max-width: 300px;
-    max-height: 420px;
-    margin: 20px 3%;
-    background-color: white;
-}
-
 .reward-image {
     min-width: 240px;
     min-height: 240px;
@@ -405,4 +412,20 @@ a:hover {
     width: 50%;
     display: flex;
     justify-content: right;
+}
+
+.disable-input:disabled{
+    background-color: #2F2F2F;
+    color: white;
+}
+
+.form-control{
+    width: 50%;
+    border-radius: 10px;
+}
+
+.count-button{
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
 }
