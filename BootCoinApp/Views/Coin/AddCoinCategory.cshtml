@@ -1,4 +1,4 @@
-﻿@model IEnumerable<AddCoinCategory>
+﻿@model AddCoinCategory
 @{
     ViewData["Title"] = "Add Coin";
 }
@@ -23,11 +23,44 @@
 <div style="height: 100%; flex-direction: column;" class="d-flex justify-content-center align-items-center theme-text-change">
     <div style="width: auto;">
         <h2>Add New Coin Category</h2>
-        <form>
-            <div>
-                <label>Coin Category Name:</label>
-                <input style="width: 100%;" class="form-control theme-container-change"/>
+        <form method="post" asp-controller="Coin" asp-action="AddCoinCategory">
+            <div class="mb-2">
+                <label asp-for="AddCoinCategoryName">Coin Category Name:</label>
+                <input asp-for="AddCoinCategoryName" style="width: 100%;" class="form-control theme-container-change"/>
+                <span asp-validation-for="AddCoinCategoryName" class="text-danger"></span>
             </div>
+            <div class="mb-2">
+                <label asp-for="RequiredCoin" class="form-label theme-text-change">Coin Count:</label>
+                <div class="input-group d-flex">
+                    <div class="input-group-prepend">
+                        <button type="button" class="btn btn-outline-secondary theme-container-change count-button" id="decrement">-</button>
+                    </div>
+                    <input style="width: 75%;" asp-for="RequiredCoin" type="number" class="form-control theme-container-change" id="quantity" value="1" min="1">
+                    <div class="input-group-append">
+                        <button type="button" class="btn btn-outline-secondary theme-container-change count-button" id="increment">+</button>
+                    </div>
+                </div>
+                <span asp-validation-for="RequiredCoin" class="text-danger"></span>
+            </div>
+            <a class="btn btn-secondary" asp-action="CoinPeople" asp-controller="Coin">Back</a>
+            <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#decrement").click(function () {
+            var value = $("#quantity").val();
+            if (value > 1) {
+                value--;
+            }
+            $("#quantity").val(value);
+        });
+        $("#increment").click(function () {
+            var value = $("#quantity").val();
+            value++;
+            $("#quantity").val(value);
+        });
+    });
+</script>
