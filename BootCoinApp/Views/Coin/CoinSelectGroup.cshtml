@@ -4,7 +4,10 @@
 }
 
 <div class="top d-flex top-container theme-container-change">
-    <input class="search-bar" type="text" placeholder="Search" />
+    <form class="w-100" asp-action="CoinSelectGroup" asp-controller="Coin">
+        <input type="text" name="query" class="search-bar w-100" placeholder="Search" />
+    </form>
+
     <div class="d-inline-flex center-vertical profile">
         <div class="d-flex center-vertical">
             <a class="margin-0 theme-text-change" id="main-text">Admin</a>

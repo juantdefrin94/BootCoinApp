@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BootCoinApp.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230212091822_ChangingCoin")]
-    partial class ChangingCoin
+    [Migration("20230212140635_CompleteMigration")]
+    partial class CompleteMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

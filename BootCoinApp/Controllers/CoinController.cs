@@ -35,15 +35,23 @@ namespace BootCoinApp.Controllers
             return View(groups);
         }
 
-        public IActionResult CoinSelect()
+        public IActionResult CoinSelect(string query="")
         {
-            List<AddCoinCategory> coins = _context.AddCoinCategories.ToList();
+            IEnumerable<AddCoinCategory> coins = _context.AddCoinCategories.ToList();
+            if (!string.IsNullOrEmpty(query))
+            {
+                coins = coins.Where(c => c.AddCoinCategoryName.ToLower().Contains(query.ToLower()));
+            }
             return View(coins);
         }
 
-        public IActionResult CoinSelectGroup()
+        public IActionResult CoinSelectGroup(string query="")
         {
-            List<AddCoinCategory> coins = _context.AddCoinCategories.ToList();
+            IEnumerable<AddCoinCategory> coins = _context.AddCoinCategories.ToList();
+            if (!string.IsNullOrEmpty(query))
+            {
+                coins = coins.Where(c => c.AddCoinCategoryName.ToLower().Contains(query.ToLower()));
+            }
             return View(coins);
         }
 
