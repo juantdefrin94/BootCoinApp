@@ -6,7 +6,7 @@
         public string AddCoinCategoryName { get; set; }
         public int RequiredCoin { get; set; }
         public string Photo { get; set; } = string.Empty;
-        public ICollection<DetailTransactionAddCoinGroup> DetailTransactionAddCoinGroups { get; set;}
-        public ICollection<DetailTransactionAddCoinUser> DetailTransactionAddCoinUsers { get; set;}
+        public ICollection<DetailTransactionAddCoinGroup>? DetailTransactionAddCoinGroups { get; set;}
+        public ICollection<DetailTransactionAddCoinUser>? DetailTransactionAddCoinUsers { get; set;}
     }
 }

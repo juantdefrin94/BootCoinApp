@@ -3,6 +3,7 @@ using BootCoinApp.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion.Internal;
+using Microsoft.IdentityModel.Tokens;
 using System.Linq;
 
 namespace BootCoinApp.Controllers
@@ -48,13 +49,28 @@ namespace BootCoinApp.Controllers
 
         public IActionResult AddCoinCategory()
         {
-            List<AddCoinCategory> coins = _context.AddCoinCategories.ToList();
-            return View(coins);
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddCoinCategory(AddCoinCategory coin)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+            _context.AddCoinCategories.Add(coin);
+            _context.SaveChanges();
+            return Redirect("CoinPeople");
         }
 
         [HttpPost]
         public IActionResult AddCoinToUser(string coins, string userList)
         {
+            if (string.IsNullOrEmpty(userList) || string.IsNullOrEmpty(coins))
+            {
+                return Redirect("CoinPeople");
+            }
             var tempList = userList.Split(",");
             var coinList = coins.Split(",");
             int tempCoins = 0;
@@ -83,6 +99,10 @@ namespace BootCoinApp.Controllers
         [HttpPost]
         public IActionResult AddCoinToGroup(string coins, string userList)
         {
+            if (string.IsNullOrEmpty(userList) || string.IsNullOrEmpty(coins))
+            {
+                return Redirect("CoinGroup");
+            }
             var tempList = userList.Split(",");
             var coinList = coins.Split(",");
             int tempCoins = 0;
@@ -111,12 +131,20 @@ namespace BootCoinApp.Controllers
         [HttpPost]
         public IActionResult PassingUser(string temp)
         {
+            if (temp.IsNullOrEmpty())
+            {
+                return Redirect("CoinPeople");
+            }
             TempData["tempList"] = temp;
             return Redirect("CoinSelect");
         }
         [HttpPost]
         public IActionResult PassingGroup(string temp)
         {
+            if (temp.IsNullOrEmpty())
+            {
+                return Redirect("CoinGroup");
+            }
             TempData["tempList"] = temp;
             return Redirect("CoinSelectGroup");
         }

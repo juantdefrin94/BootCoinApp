@@ -14,8 +14,7 @@ namespace BootCoinApp.Configurations
             builder.Property(x => x.RequiredCoin)
                 .IsRequired();
 
-            builder.Property(x => x.Photo)
-                .IsRequired();
+            builder.Property(x => x.Photo);
 
             builder.HasMany(x => x.DetailTransactionAddCoinUsers)
                 .WithOne(x => x.AddCoinCategory)
