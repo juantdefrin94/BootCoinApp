@@ -354,7 +354,7 @@ namespace BootCoinApp.Data
                     {
                         new Reward()
                         {
-                            CategoryId = 1,
+                            CategoryId = 3,
                             RewardName = "PTFI Polo Shirt",
                             RewardDescription = "Kaos polo lengan pendek basic, cocok untuk segala outfit.",
                             RequiredCoin = 190,
@@ -362,7 +362,7 @@ namespace BootCoinApp.Data
                         },
                         new Reward()
                         {
-                            CategoryId = 1,
+                            CategoryId = 3,
                             RewardName = "PTFI Lanyard",
                             RewardDescription = "Bahan kulit yang dijahit dengan mesin",
                             RequiredCoin = 190,
@@ -371,66 +371,34 @@ namespace BootCoinApp.Data
                         new Reward()
                         {
                             CategoryId = 1,
-                            RewardName = "PTFI Clutch Bag",
-                            RewardDescription = "Logo PTFI yang keren dan elegan",
-                            RequiredCoin = 300,
-                            Photo = "PTFIClutchBag.jpg"
-                        },
-                        new Reward()
-                        {
-                            CategoryId = 1,
-                            RewardName = "PTFI Card Holder",
-                            RewardDescription = "Dompet kecil dan Compact",
-                            RequiredCoin = 230,
-                            Photo = "PTFICardHolder.jpg"
-                        },
-                        new Reward()
-                        {
-                            CategoryId = 1,
-                            RewardName = "PTFI Backpack",
-                            RewardDescription = "Dengan bahan kulit , ringan  cocok untuk menemani kesendirian",
-                            RequiredCoin = 400,
-                            Photo = "PTFIBackpack.jpg"
-                        },
-                        new Reward()
-                        {
-                            CategoryId = 2,
                             RewardName = "BIA",
                             RewardDescription = "Mentoring langsung BIA",
                             RequiredCoin = 1200,
-                            Photo = "BIA.jpg"
+                            Photo = "mentoring.jpg"
                         },
                         new Reward()
                         {
-                            CategoryId = 2,
+                            CategoryId = 1,
                             RewardName = "BSA",
                             RewardDescription = "Mentoring langsung BSA",
                             RequiredCoin = 1200,
-                            Photo = "BSA.jpg"
+                            Photo = "mentoring.jpg"
                         },
                         new Reward()
                         {
                             CategoryId = 2,
-                            RewardName = "CSA",
-                            RewardDescription = "Mentoring langsung CSA",
-                            RequiredCoin = 1200,
-                            Photo = "CSA.jpg"
-                        },
-                        new Reward()
-                        {
-                            CategoryId = 2,
-                            RewardName = "DKV",
-                            RewardDescription = "Mentoring langsung DKV",
-                            RequiredCoin = 1200,
-                            Photo = "DKV.jpg"
-                        },
-                        new Reward()
-                        {
-                            CategoryId = 3,
                             RewardName = "Gopay 20.000",
                             RewardDescription = "Mendapatkan voucher gopay sebesar Rp.20.000",
                             RequiredCoin = 70,
-                            Photo = "Gopay20K.jpg"
+                            Photo = "gopay.png"
+                        },
+                        new Reward()
+                        {
+                            CategoryId = 2,
+                            RewardName = "Gopay 50.000",
+                            RewardDescription = "Mendapatkan voucher gopay sebesar Rp.50.000",
+                            RequiredCoin = 200,
+                            Photo = "gopay.png"
                         }
                     });
                     context.SaveChanges();
@@ -485,28 +453,28 @@ namespace BootCoinApp.Data
                         {
                             UserId = 7,
                             AdminId = 2,
-                            RewardId = 7,
+                            RewardId = 2,
                             Date = DateTime.Today
                         },
                         new TransactionReward()
                         {
                             UserId = 8,
                             AdminId = 1,
-                            RewardId = 8,
+                            RewardId = 1,
                             Date = DateTime.Today
                         },
                         new TransactionReward()
                         {
                             UserId = 9,
                             AdminId = 2,
-                            RewardId = 9,
+                            RewardId = 3,
                             Date = DateTime.Today
                         },
                         new TransactionReward()
                         {
                             UserId = 10,
                             AdminId = 1,
-                            RewardId = 10,
+                            RewardId = 5,
                             Date = DateTime.Today
                         }
                     });
