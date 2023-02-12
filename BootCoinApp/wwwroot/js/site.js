@@ -63,7 +63,7 @@ if (localStorage.getItem("isDark") != null && localStorage.getItem("isDark") == 
 console.log("isDark = " + isDark + " after if");
 
 
-if (page == "CoinPeople" || page == "CoinGroup" || page == "CoinSelect" || page == "CoinSelectGroup") {
+if (page == "CoinPeople" || page == "CoinGroup" || page == "CoinSelect" || page == "CoinSelectGroup" || page == "AddCoinCategory") {
     currMenu = 1;
     changeToDefault(addRewardButton);
 } else {

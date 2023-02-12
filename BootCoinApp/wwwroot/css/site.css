@@ -175,6 +175,24 @@ a:hover {
     margin-left: 20px;
 }
 
+.red-button {
+    border-style: none;
+    border-radius: 10px;
+    background-color: #AD1A25;
+    font-size: 20px
+}
+
+.red-button:hover {
+    background-color: #BD1C28;
+}
+
+.back-button {
+    margin-left: 20px;
+    margin-top: 20px;
+    background-color: transparent;
+    border: none 10px;
+}
+
 .button-menu {
     margin-top: 0px;
     padding: 10px 0;
@@ -266,11 +284,12 @@ a:hover {
 }
 
 .row-coin-card-coin {
+    margin-top: 2%;
     max-height: 47%;
     min-height: 23%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: center;
     overflow: auto;
 }
 

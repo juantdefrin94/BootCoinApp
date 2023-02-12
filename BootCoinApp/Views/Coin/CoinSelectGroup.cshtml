@@ -17,6 +17,8 @@
     <h3>@ViewData["Title"]</h3>
 </div>
 
+<a class="btn btn-secondary back-button"asp-action="CoinGroup" asp-controller="Coin" asp-route-categoryId="@ViewData["categoryID"]" asp-route-categoryName="@ViewData["categoryName"]"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+
 @if (Model != null)
 {
     <div class="row-coin-card-coin theme-background-change">
@@ -35,14 +37,16 @@
             </div>
         }
 
-        <div class="col-coin-card-coin theme-container-change">
-            <div class="card-body" style="text-align:center;">
-                <div>
-                    <img src="../assets/bootcoin.png" alt="..." width="100" height="100">
+        <a asp-controller="Coin" asp-action="AddCoinCategory">
+            <div class="col-coin-card-coin theme-container-change">
+                <div class="card-body" style="text-align:center;">
+                    <div>
+                        <img src="../assets/bootcoin.png" alt="..." width="100" height="100">
+                    </div>
+                    <h6 class="theme-text-change">Add New</h6>
                 </div>
-                <h6 class="theme-text-change">Add New</h6>
             </div>
-        </div>
+        </a>
     </div>
 }
 else

@@ -20,30 +20,35 @@
     <h3>@ViewData["Title"]</h3>
 </div>
 
-<div style="height: 100%; flex-direction: column;" class="d-flex justify-content-center align-items-center theme-text-change">
-    <div style="width: auto;">
-        <h2>Add New Coin Category</h2>
+<a class="btn btn-secondary back-button" asp-action="CoinPeople" asp-controller="Coin"><i class="fa fa-arrow-left" aria-hidden="true"></i></a>
+
+<div style="height: 80%; flex-direction: column;" class="d-flex justify-content-center align-items-center theme-text-change">
+    <div style="width: 50%; padding: 0px 10%;">
+        <div class="d-flex justify-content-center">
+            <h2>Add New Coin Category</h2>
+        </div>
         <form method="post" asp-controller="Coin" asp-action="AddCoinCategory">
             <div class="mb-2">
                 <label asp-for="AddCoinCategoryName">Coin Category Name:</label>
-                <input asp-for="AddCoinCategoryName" style="width: 100%;" class="form-control theme-container-change"/>
+                <input asp-for="AddCoinCategoryName" style="width: 100%;" class="form-control theme-container-change theme-input-change" placeholder="Category Name"/>
                 <span asp-validation-for="AddCoinCategoryName" class="text-danger"></span>
             </div>
             <div class="mb-2">
                 <label asp-for="RequiredCoin" class="form-label theme-text-change">Coin Count:</label>
-                <div class="input-group d-flex">
+                <div class="input-group d-flex" style="width: 50%;">
                     <div class="input-group-prepend">
-                        <button type="button" class="btn btn-outline-secondary theme-container-change count-button" id="decrement">-</button>
+                        <button style="width: 37px; height: auto; margin-right: 20px;" type="button" class="btn btn-outline-secondary theme-container-change count-button" id="decrement">-</button>
                     </div>
-                    <input style="width: 75%;" asp-for="RequiredCoin" type="number" class="form-control theme-container-change" id="quantity" value="1" min="1">
-                    <div class="input-group-append">
+                    <input style="border-radius: 10px;" asp-for="RequiredCoin" type="number" class="form-control theme-container-change theme-input-change" id="quantity" value="1" min="1">
+                    <div style="margin-left: 20px;" class="input-group-append">
                         <button type="button" class="btn btn-outline-secondary theme-container-change count-button" id="increment">+</button>
                     </div>
                 </div>
                 <span asp-validation-for="RequiredCoin" class="text-danger"></span>
             </div>
-            <a class="btn btn-secondary" asp-action="CoinPeople" asp-controller="Coin">Back</a>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary red-button">Input</button>
+            </div>
         </form>
     </div>
 </div>
